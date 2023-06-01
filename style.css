@@ -82,9 +82,9 @@ Font Include {
 /* .top-content {
     padding-bottom: 5px;
 } */
-/* top-content{
-    border:3px burlywood solid;
-} */
+ /* top-content{
+    border:3px black solid;
+}  */
 #sante{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-weight: 500;
@@ -101,9 +101,14 @@ Font Include {
     position: relative;
 }
 #contact {
+
     padding:10px;
-    background-color: #f8eeee;
+    
     line-height: 8px;
+}
+#top-border{
+    background-color: #f8eeee;
+    padding:10px;
 }
 .container{
     background-color: white;

@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <!-- Custom Style -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="styly.css">
+    <script src="search.js" defer></script>
+
+    <title>Invoice</title>
+</head>
+
+<body>
+    <div class = "container">
+        
+   
+    
+    <div class="my-5 page p-5" id="printArea" size="A4">
+        <!-- <div class="p-5"> -->
+            <section class="top-content bb d-flex justify-content-between print-remove">
+                <div class="logo">
+                                    
+                    <img src="logo1.jpg" alt="" style="height: 300px ; width:300px" img-fluid>
+                </div>
+                <div id="contact">
+                    
+                    <h3> <span>Acupuncture Yi King</span></h3>
+                    <p> <span>Tram-Anh Dam, Ac</span></p>
+                    <p> <span> #Permis OAQ: A-035-13</span></p>
+                    <p> <span>8220 Des Trembles, Mirabel (Qc) J7N 1T7</span></p>
+                    <p> <span>2598A St-Zotique, Montreal (Qc) H1Y 1C7</span></p>
+                    <p> <span>514-816-0356</span></p>
+                    <p> <span>tramanhdam.ac@gmail.com</span></p>
+                    
+                </div>
+               
+                
+                <div class="top-left">
+                    <div class="graphic-path" >
+                        <p id="date"> <span>Date: </span></p>
+                    </div>
+                    <div class="position-relative">
+                                     
+                        <p id="facture"><span style="font-weight:600">Facture: </span>  </p>
+                        <br><br>
+                        <p> <span style="font-weight:600;margin-top:20px;padding:none">Dû à la réception</span></p>
+                        <!-- <p><span>Solde dû : 0$</span></p> -->
+                        <label for="solde">Solde dû : </label>
+                        <input type="text" id="solde" style="width: 45px;" name="solde" value="0">
+                    </div>
+                </div>
+            </section>
+            <section id="commands">
+                <div id="select-boxes">
+                <input type="button" class="noprint btn-warning nav-cancel" id="print" value="Imprimer" >
+            <form>
+                <b></b>
+                 
+                <!-- <button class="refresh" id="refresh-time">img</button> -->
+                <div id="treat1"></div> 
+                <!-- <label for="selJoueur" style="text-align: left; margin-top: 2%;">Faites votre choix</label> -->
+                    <input type="number" class="noprint" id="qtyy" min="0" max="10" value="1" > 
+                    <select class="noprint"  id="type"  name="treatment" onchange="selectTreatment(this); ">
+                                <option selected="true" disabled="disabled" selected="selected">Selectionner Traitement</option>
+                                Ouverture dossier
+                                <option >Ouverture dossier </option>
+                                <option >Entrevue et traitement acupuncture Adulte  </option>
+                                <option >Entrevue et traitement acupuncture Moins de 18 ans  </option>
+                                <option >Acupuncture - Suivi Adulte</option>
+                                <option >Acupuncture - Suivi moins de 18 ans</option>
+                                <option >Acupuncture esthétique Aculift</option>
+                                <option >Acupuncture esthétique Aculift aiguilles en or</option>
+                                <option >Acupuncture esthetique Qi Beauty</option>
+                                <option >Acupuncture esthétique visage</option>
+                                <option >Acupuncture esthétique visage</option>
+                                <option >Acupuncture esthétique visage aiguilles en or </option>
+                            
+                        </select> 
+                
+                </form>
+                </div>  
+            </section>
+            <section class="store-user mt-5">
+                <div class="col-10">
+                    <div class="row bb pb-3">
+                        <div class="col-7">
+                            <h4>ADRESSE DE FACTURATION</h4>
+        <div class = "search-wrapper">
+            <label for="search" >Search Contacts</label>
+            <input style="width: 40%" type="search" id="search" data-search>
+            <!-- this will be empty and javascript will populate it for us -->
+        </div>
+        <div class="user-cards" data-user-cards-container></div>
+    
+        <!-- take card and convert into template -->
+        <!-- create html that doesnt show up on teht page -->
+        <template data-user-template>
+            
+            <div class="card">
+
+                <div class="header" data-header>my Name</div>
+                <div class="address" data-address>address</div>
+                <div class="Ville" data-ville>Ville</div>
+                <div class="Region" data-region>Region</div>
+                <div class="tel" data-tel>Telephone</div>
+                
+                <div class="body" data-body>email@gmail.com</div>
+                
+            </div>
+        
+         </template>
+    
+                     </div>
+                        <div class="col-5">
+                            <textarea id="text-area" name="notes" rows="6" ,="" cols="40"></textarea>
+                        
+                            <div id="test"></div>
+                        </div>
+                    </div>
+                    <div class="row extra-info pt-3">
+                        <div class="col-7">
+                        </div>
+                        <div class="col-5">
+                            <!-- <p>Deliver Date: <span>10-04.2021</span></p> -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="product-area mt-4">
+                <table class="table table-hover">
+                    <thead>
+                        <!-- THIS THE HEADER TOP ROW IN MAROON -->
+                        <tr id="treatment-type">
+                            
+                            <td>TYPE DE TRAITEMENT</td> 
+                            <td>Prix unitaire</td>
+                            <td id="qty-item">Quantité</td>
+                            <td>Total</td>
+                        </tr>
+                   
+                   <!-- //THIS THE INJECTION TREATMENET ZONE -->
+                    </thead>
+                   
+                    <tbody id="treatment-zone">
+                        
+                        <!-- <tr id="treatmemt-selection">
+                            <td id="treatment-item">Traitement</td>   
+                            <td id="price-1">Prix</td>
+                            <td><input type="number" id="qty" value = 1 style="width:35px"></td>
+                            <td id="pric1"> Prix </td>
+                        </tr> -->
+                     
+                    </tbody>
+                    
+                </table>
+            </section>
+
+            <section class="balance-info">
+                <div class="row">
+                   
+                    <div class="col-6" >
+                        <p style="margin-left:8px"class="m-0 font-weight-bold"> Notes : </p>
+                        <textarea id="text-area" name = "notes" rows = '6', cols = '40'></textarea>
+                        <div id="sante">Faites de votre santé une priorité!</div>
+                        
+                    </div>
+                    <div class="col-6">
+                        <table class="table border-0 table-hover">
+                            <tr>
+                                <td id="sous-total">TOTAL: </td>
+                                <td id="ss-total"></td>
+                            </tr>
+                            <tr>
+                                <!-- <td>Tax:</td>
+                                <td>15$</td> -->
+                            </tr>
+                            <tr>
+                                <!-- <td>Deliver:</td>
+                                <td>10$</td> -->
+                            </tr>
+                            <tfoot><br>
+                                <tr>
+                                    <td><button  id="calc-total" class="btn-danger" aria-placeholder="PAYE : ">PAYE : </button></td>
+                                    <td id="total"></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <br>
+                        <!-- Signature -->
+                        <div class="col-12">
+                            <!-- <img src="signature.png" class="img-fluid" alt=""> -->
+                            
+                            <p class="text-left m-0 total-style">  Signature: </p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cart BG -->
+            <!-- <img src="cart.jpg" class="img-fluid cart-bg" alt=""> -->
+
+         
+        <!-- </div> -->
+    </div>
+</div>
+    
+<script>
+
+let date = new Date();
+
+//date = date.toLocaleDateString('en-US');//alert(date);
+
+let dailyInvoicecount = 0;
+let paraFacture = document.getElementById('facture');
+let p=document.createElement('p');
+ p.setAttribute('id', 'factureId'); 
+ paraFacture.append(p);//appends paragraph with id facture-id to p facture tag
+ //let dinvoice="";
+//  let textnode=document.createTextNode(dinvoice);  p.append(textnode);
+  
+  paraFacture.addEventListener('click', generate);//this generates invoice numbers
+  
+  //dinvoice = increment(); //alert("increment= "+increment());alert("dinvoice = "+dinvoice);
+   
+   
+//must increment only the daily invoice count
+    function increment(){
+    dailyInvoicecount+=1; 
+    dailyInvoicCount = dailyInvoicecount.toString();
+    return dailyInvoicecount;
+    }
+    function generateInvoiceNumber(dailyInvoiceCount){
+       
+       let dd = date.getDate().toString(); 
+       let mm = ((date.getMonth())+1).toString(); 
+       let yy = date.getFullYear().toString();
+       //alert (dd+" "+mm+" "+yy);
+       
+       invoice = yy+'-'+mm+'-'+dd+0+dailyInvoiceCount;
+       return invoice;
+           
+    }
+
+      function generate(){
+
+       generateInvoiceNumber(dailyInvoicecount);
+       increment(); 
+       //alert(dailyInvoicecount);
+       document.getElementById('facture').innerHTML = "Facture : " +invoice;
+    }
+   
+document.getElementById('date').innerHTML+=date.toLocaleDateString('en-US');
+     let arr=[];
+     let qty = 1; 
+    
+     function selectTreatment(){ //param = treat1 or treat2 - . adult , efnant...type typ2 (option)
+      qty = document.getElementById('qtyy').value;
+      let sousTotal=0;
+      let total = 0;
+      let prix = 30;
+    
+     let myTreatments = document.getElementById("type");//goest to treat1 or to
+     
+     let treatment = myTreatments.options[type.selectedIndex].value; //alert(treatment);ok
+     
+
+     let newTag ='<table class="table table-hover"><thead><tbody id="treatment-zone">' +
+                        '<td id="treatment-item">'+treatment+'</td>' +
+                        '<td id="price-1">'+getPrix(treatment)+'$</td>' +
+                        '<td id="qty-chosen">'+qty+'</td>' +
+                        //'<td><input type="number" id="qty-chosen" value=1 style="width:35px;"></td>' +
+                        '<td id="pric-1">'+getPrix(treatment)*qty+'$</td>' +
+                        '</tr></tbody></thead></table>';
+
+                   
+     document.getElementById("treatment-zone").innerHTML += newTag; //
+   
+     //document.getElementById('qty-chosen').innerHTML = parseInt(qty); 
+     
+   
+     sousTotal += getPrix(treatment)*qty;   
+     
+     let sum=0;
+     arr.push(sousTotal); 
+     for(i=0;i<arr.length;i++){
+     sum+=arr[i];
+     }
+     document.getElementById("qtyy").value = 1;
+     document.getElementById('sous-total').innerHTML = "TOTAL : "+sum+"$";
+     document.getElementById('calc-total').innerHTML = "PAYE : "+ sum+"$";
+     
+     resetSelectElement(type);
+     } 
+    
+    
+
+   function getPrix(treatment){
+    //put in case addQty.     
+          
+    if(treatment==="Entrevue et traitement acupuncture Adulte"||treatment === "Acupuncture - Suivi Adulte"){
+            prix=75;
+            
+        }
+        else if(treatment==="Ouverture dossier"){
+            prix=15;
+            
+        }
+        else if(treatment==="Acupuncture esthétique Aculift"){
+            prix=115;
+            
+        }
+        
+        else 
+            if(treatment==="Entrevue et traitement acupuncture Moins de 18 ans" || treatment==="Acupuncture - Suivi moins de 18 ans"){
+            prix=65;
+            
+        }
+        else if(treatment==="Acupuncture esthétique Aculift aiguilles en or"){
+            prix=135;
+            
+        }
+        else if(treatment==="Acupuncture esthetique Qi Beauty"){
+            
+            prix=145;
+            
+        }
+        else if(treatment==="Acupuncture esthétique visage"){
+            prix=40;
+            
+        }else if(treatment ==="Acupuncture esthétique visage aiguilles en or"){
+            prix = 60;
+        }
+       
+        else{
+
+            prix = 0;
+            
+        }
+           
+        return prix;
+    }
+    
+    let btn = document.getElementById('print');
+    
+    btn.addEventListener('click', print_Facture);
+    
+    function print_Facture(){
+
+        // Remove the print button in css
+        //empty section removed
+    
+      let section= document.getElementById('commands');
+      section.remove();
+      window.print(); 
+      
+      //printWindow.close();
+ 
+        
+    }
+    
+  function resetSelectElement(element) {
+    element.selectedIndex = 0;  // first option is selected, or
+    qty=1;                               // -1 for no option selected
+}
+
+
+//    function resetqty(element) {
+//      document.getElementById('qtyy').reset();
+//      }    
+    
+</script>
+</body>
+</html>
+

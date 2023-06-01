@@ -58,7 +58,7 @@ input, select{
 }
 #date{
     margin-bottom:10px;
-    font-size:larger;
+    font-size:1rem;
 }
 .page[size="A4"] {
     width: 24cm;

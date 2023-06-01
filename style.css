@@ -61,7 +61,7 @@ input, select{
     font-size:larger;
 }
 .page[size="A4"] {
-    width: 22.5cm;
+    width: 24cm;
     height: 60cm;
     overflow: hidden;
     margin-bottom: 40px;

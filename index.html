@@ -21,10 +21,7 @@
 </head>
 
 <body>
-    
         
-   
-    
     <div class="my-5 page p-5" id="printArea" size="A4">
         <!-- <div class="p-5"> -->
             <section class="top-content bb d-flex justify-content-between">
@@ -41,12 +38,13 @@
                         <p> <span>8220 Des Trembles, Mirabel (Qc) J7N 1T7</span></p>
                         <p> <span>2598A St-Zotique, Montreal (Qc) H1Y 1C7</span></p>
                         <p> <span>514-816-0356</span></p>
+                        <br>
                         <p> <span>tramanhdam.ac@gmail.com</span></p>
                         
                     </div>
                 </div>    
                 
-                <div class="top-left">
+                <div class="top-left" style="padding-right:25px">
                     <div class="graphic-path" >
                         
                     </div>
@@ -64,7 +62,7 @@
             <section id="commands">
                 <div id="select-boxes">
                 <input type="button" class="noprint btn-warning nav-cancel" id="print" value="Imprimer" >
-            <form>
+            <form id="search-Form">
                 <b></b>
                  
                 <!-- <button class="refresh" id="refresh-time">img</button> -->
@@ -95,37 +93,49 @@
                 <div class="col-10">
                     <div class="row bb pb-3">
                         <div class="col-7">
-                            <h4>ADRESSE DE FACTURATION</h4>
-        <div class = "search-wrapper">
-            <label for="search" >Search Contacts</label>
-            <input style="width: 40%" type="search" id="search" data-search>
-            <!-- this will be empty and javascript will populate it for us -->
-        </div>
-        <div class="user-cards" data-user-cards-container></div>
+                            
+           
+                <form>
+                    <div class = "search-wrapper noprint">
+                    <label for="search" >Search Contacts-type "x" to hide</label>
+                    
+                    <input style="width: 40%" type="search" id="search" data-search>
+                    <button class="btn-form" onclick="resetForm(this);" id="refresh">Reset</button>
+                    <!-- this will be empty and javascript will populate it for us -->
+                    </div>
+                </form>
+                          
+        <div class="user-cards copy noprint" id="user-cards" data-user-cards-container></div>
     
-        <!-- take card and convert into template -->
+        <!-- take card and convert iinto template -->
         <!-- create html that doesnt show up on teht page -->
-        <template data-user-template>
-            
-            <div class="card">
-
-                <div class="header" data-header>my Name</div>
-                <div class="address" data-address>address</div>
-                <div class="Ville" data-ville>Ville</div>
-                <div class="Region" data-region>Region</div>
-                <div class="tel" data-tel>Telephone</div>
-                
-                <div class="body" data-body>email@gmail.com</div>
-                
+        
+        <template  data-user-template >
+           
+            <div class="card" >
+  
+                        <div class="header" data-header>my Name</div>
+                        <div class="address" data-address>address</div>
+                        <div class="Ville" data-ville>Ville</div>
+                        <div class="Region" data-region>Region</div>
+                        <div class="tel" data-tel>Telephone</div>
+                        
+                        <div class="body" data-body>email@gmail.com</div>
+                        <button id="btn-card" style="height:fit-content;width:fit-content"; data-button onclick= "getContacts(this);"><img src="0-circle.svg" alt="copy"></button>
+                       
+         
+              
             </div>
         
          </template>
     
                      </div>
                         <div class="col-5">
+                            
+                            <h4>ADRESSE DE FACTURATION</h4>
+                            <br>
+                            <div style="font-size:1.3rem ; line-height:normal;font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" id="test"></div>
                             <textarea id="text-area" name="notes" rows="6" ,="" cols="40"></textarea>
-                        
-                            <div id="test"></div>
                         </div>
                     </div>
                     <div class="row extra-info pt-3">
@@ -172,7 +182,7 @@
                    
                     <div class="col-6" >
                         <p style="margin-left:8px"class="m-0 font-weight-bold"> Notes : </p>
-                        <textarea id="text-area" name = "notes" rows = '6', cols = '40'></textarea>
+                        <textarea id="text-area1" name = "notes" rows = '6', cols = '40'></textarea>
                         <div id="sante">Faites de votre santé une priorité!</div>
                         
                     </div>
@@ -206,7 +216,7 @@
                         </div>
                         
                     </div>
-                </div>
+                
             </section>
 
             <!-- Cart BG -->
@@ -215,7 +225,7 @@
          
         <!-- </div> -->
     </div>
-
+</div>
     
 <script>
 
@@ -254,6 +264,7 @@ let p=document.createElement('p');
            
     }
 
+     
       function generate(){
 
        generateInvoiceNumber(dailyInvoicecount);
@@ -375,11 +386,7 @@ document.getElementById('date').innerHTML+=date.toLocaleDateString('en-US');
     element.selectedIndex = 0;  // first option is selected, or
     qty=1;                               // -1 for no option selected
 }
-
-
-//    function resetqty(element) {
-//      document.getElementById('qtyy').reset();
-//      }    
+   
     
 </script>
 </body>

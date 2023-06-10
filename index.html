@@ -16,6 +16,7 @@
     
     <link rel="stylesheet" href="styly.css">
     <script src="search.js" defer></script>
+    
 
     <title>Invoice</title>
 </head>
@@ -29,7 +30,7 @@
                 <div id="top-border" class="bb d-flex justify-content-between">
                     <div class="logo">
                                         
-                        <img src="logo.jpg" alt="" style="height: 300px ; width:300px" img-fluid>
+                        <img src="logo.jpg" alt="logo" style="height: 200px ; width:200px" img-fluid>
                     </div>
                     <div id="contact">
                     
@@ -70,33 +71,33 @@
                 <div id="treat1"></div> 
                 <!-- <label for="selJoueur" style="text-align: left; margin-top: 2%;">Faites votre choix</label> -->
                     <input type="number" class="noprint" id="qtyy" min="0" max="10" value="1" > 
-                    <select class="noprint"  id="type"  name="treatment" onchange="selectTreatment(this); ">
+                    <select class="noprint"  id="type"  name="treatment" onchange="selectTreatment(this);">
                                 <option selected="true" disabled="disabled" selected="selected">Selectionner Traitement</option>
-                                Ouverture dossier
-                                <option >Ouverture dossier </option>
-                                <option >Entrevue et traitement acupuncture Adulte  </option>
-                                <option >Entrevue et traitement acupuncture Moins de 18 ans  </option>
-                                <option >Acupuncture - Suivi Adulte</option>
-                                <option >Acupuncture - Suivi moins de 18 ans</option>
-                                <option >Acupuncture esthétique Aculift</option>
-                                <option >Acupuncture esthétique Aculift aiguilles en or</option>
-                                <option >Acupuncture esthetique Qi Beauty</option>
-                                <option >Acupuncture esthétique visage</option>
-                                <option >Acupuncture esthétique visage</option>
-                                <option >Acupuncture esthétique visage aiguilles en or </option>
+                                <option>Ouverture dossier </option>
+                                <option>Entrevue et traitement acupuncture Adulte  </option>
+                                <option>Entrevue et traitement acupuncture Moins de 18 ans  </option>
+                                <option>Acupuncture - Suivi Adulte</option>
+                                <option>Acupuncture - Suivi moins de 18 ans</option>
+                                <option>Acupuncture esthétique Aculift</option>
+                                <option>Acupuncture esthétique Aculift aiguilles en or</option>
+                                <option>Acupuncture esthetique Qi Beauty</option>
+                                <option>Acupuncture esthétique visage</option>
+                                <option>Acupuncture esthétique visage</option>
+                                <option>Acupuncture esthétique visage aiguilles en or </option>
                             
                         </select> 
                 
                 </form>
                 </div>  
             </section>
+            <div class="hide" id="myDiv"></div>
             <section class="store-user mt-5">
                 <div class="col-10">
                     <div class="row bb pb-3">
                         <div class="col-7">
                             
-           
-                <form>
+                
+                <form id="form">
                     <div class = "search-wrapper noprint">
                     <label for="search" >Search Contacts-type "x" to hide</label>
                     
@@ -106,7 +107,7 @@
                     </div>
                 </form>
                           
-        <div class="user-cards copy noprint" id="user-cards" data-user-cards-container></div>
+        <div class="user-cards hide copy noprint" id="user-cards" data-user-cards-container></div>
     
         <!-- take card and convert iinto template -->
         <!-- create html that doesnt show up on teht page -->
@@ -155,9 +156,9 @@
                         <!-- THIS THE HEADER TOP ROW IN MAROON -->
                         <tr id="treatment-type">
                             
-                            <td>TYPE DE TRAITEMENT</td> 
-                            <td>Prix unitaire</td>
-                            <td id="qty-item">Quantité</td>
+                            <td class="treats">TYPE DE TRAITEMENT</td> 
+                            <td class="treats">Prix unitaire</td>
+                            <td class="treats" id="qty-item">Quantité</td>
                             <td>Total</td>
                         </tr>
                    
@@ -166,13 +167,8 @@
                    
                     <tbody id="treatment-zone">
                         
-                        <!-- <tr id="treatmemt-selection">
-                            <td id="treatment-item">Traitement</td>   
-                            <td id="price-1">Prix</td>
-                            <td><input type="number" id="qty" value = 1 style="width:35px"></td>
-                            <td id="pric1"> Prix </td>
-                        </tr> -->
-                     
+                   <!-- //nothing here -->
+
                     </tbody>
                     
                 </table>
@@ -203,7 +199,7 @@
                             </tr>
                             <tfoot><br>
                                 <tr>
-                                    <td><button  id="calc-total" class="btn-danger" aria-placeholder="PAYE : ">PAYE : </button></td>
+                                    <td><button  id="calc-total" class="btn-success" aria-placeholder="PAYE : ">PAYE : </button></td>
                                     <td id="total"></td>
                                 </tr>
                             </tfoot>
@@ -230,14 +226,17 @@
     
 <script>
 
+
+
 let date = new Date();
 
 //date = date.toLocaleDateString('en-US');//alert(date);
 
 let dailyInvoicecount = 0;
 let paraFacture = document.getElementById('facture');
-let p=document.createElement('p');
- p.setAttribute('id', 'factureId'); 
+let p = document.createElement('p');
+
+p.setAttribute('id', 'factureId'); 
  paraFacture.append(p);//appends paragraph with id facture-id to p facture tag
  //let dinvoice="";
 //  let textnode=document.createTextNode(dinvoice);  p.append(textnode);
@@ -260,75 +259,187 @@ let p=document.createElement('p');
        let yy = date.getFullYear().toString();
        //alert (dd+" "+mm+" "+yy);
        
-       invoice = yy+'-'+mm+'-'+dd+0+dailyInvoiceCount;
+       invoice = yy+mm+dd+0+dailyInvoiceCount;
        return invoice;
-           
-    }
-
-     
-      function generate(){
-
-       generateInvoiceNumber(dailyInvoicecount);
-       increment(); 
-       //alert(dailyInvoicecount);
-       document.getElementById('facture').innerHTML = "Facture : " +invoice;
+    }    
+    function generate(){
+      generateInvoiceNumber(dailyInvoicecount);
+      increment(); 
+      document.getElementById('facture').innerHTML = "Facture : " +invoice;
     }
    
 document.getElementById('date').innerHTML+=date.toLocaleDateString('en-US');
+
      let arr=[];
      let qty = 1; 
-    
-     function selectTreatment(){ //param = treat1 or treat2 - . adult , efnant...type typ2 (option)
-      qty = document.getElementById('qtyy').value;
-      let sousTotal=0;
-      let total = 0;
-      let prix = 30;
-    
-     let myTreatments = document.getElementById("type");//goest to treat1 or to
+     let newPr = 0;
+     let newprice = 0; 
+    let total = 0;
+    let newprArr = [];
      
-     let treatment = myTreatments.options[type.selectedIndex].value; //alert(treatment);ok
+    function selectTreatment(item){ //param = treat1 or treat2 - . adult , efnant...type typ2 (option)
+       //set the array to evaluate correctly - remove the items from it. 
+       newprArr = [];
+       let sum = 0;
+       qty = document.getElementById('qtyy').value;
+       let sousTotal=0;
+      
+      let prix = 0;
      
-
-     let newTag ='<table class="table table-hover"><thead><tbody id="treatment-zone">' +
-                        '<td id="treatment-item">'+treatment+'</td>' +
-                        '<td id="price-1">'+getPrix(treatment)+'$</td>' +
-                        '<td id="qty-chosen">'+qty+'</td>' +
+      
+      let myTreatments = document.getElementById("type");//goest to treat1 or to
+      let treatment = myTreatments.options[type.selectedIndex].value; //alert(treatment);ok
+             
+     let newTag ='<table class="table table-hover"> <thead><tbody id="treatment-zone">'; 
+     let newTag1= '<tr class="treatment-item" onClick= "removeItem(this);"><td>'+treatment+'</td>' +
+                      '<td id="price-1" class="newprice">'+getPrix(treatment)+'$</td>' +
+                       '<td id="qty-chosen" class="newprice">'+qty+'</td>' +
                         //'<td><input type="number" id="qty-chosen" value=1 style="width:35px;"></td>' +
-                        '<td id="pric-1">'+getPrix(treatment)*qty+'$</td>' +
-                        '</tr></tbody></thead></table>';
-
+                       '<td id="pric-1" class="newprice" >'+getPrix(treatment)*qty+'$</td></tr>';
+    
+      let newTag2= '</tbody></thead></table>';
+ 
+      document.getElementById("treatment-zone").innerHTML += (newTag+newTag1+newTag2); //alert(newTag1);
+ 
+    
+                function getSum(){
+                
+                sousTotal += getPrix(treatment) * qty;   
                    
-     document.getElementById("treatment-zone").innerHTML += newTag; //
-   
-     //document.getElementById('qty-chosen').innerHTML = parseInt(qty); 
-     
-   
-     sousTotal += getPrix(treatment)*qty;   
-     
-     let sum=0;
-     arr.push(sousTotal); 
-     for(i=0;i<arr.length;i++){
-     sum+=arr[i];
-     }
-     document.getElementById("qtyy").value = 1;
-     document.getElementById('sous-total').innerHTML = "TOTAL : "+sum+"$";
-     document.getElementById('calc-total').innerHTML = "PAYE : "+ sum+"$";
-     
-     resetSelectElement(type);
-     } 
-    
-    
+                 arr.push(sousTotal);
+                    //console.log("newpr in getsume = "+newPr)   0
+                    for(i=0; i < arr.length;i++){
+                    
+                    sum += arr[i]; 
+                    }
+                    console.log("sum / arr[i] =" +sum) ///correct sum
+                    //console.log(newPr + "==newpr in getsum"); //0
+                    console.log("sum in get sum = " +sum);
+                    console.log("new sum in getsum = "+sum) //prints the sum 
+                    //document.getElementById('myDiv') = sum;
+                    return sum;  
+                        
+                    }
+                    //new rpice is declared in select treatment
+                    
+                    
+                    function displaySum(sum){
+                    
+                    document.getElementById("qtyy").value = 1; 
+                    document.getElementById('myDiv').innerHTML = sum; //number
+                    document.getElementById('sous-total').innerHTML = "TOTAL : "+(sum)+"$";
+                    document.getElementById('calc-total').innerHTML = "PAYE : "+ (sum)+"$";
+                                      
+                    
+                    // let newprice=0;// getNewPrice();
+                           
+                            //sum is a number 
+                           // alert(sum);// ok
+                           //if(newprice===0){
+                            //document.getElementById("myDiv").innerHTML=0;
+                            //} 
+                             
+                            //alert(newprice + typeof(newprice)); //nothing there yet
+                            //newprice = parseInt(newprice); 
+                            //alert(typeof(newprice)) //NANA
+                        
+                            console.log(newPr +" newprice in displaysum "+typeof(newprice));
+                            console.log("type of sum sum sum" +typeof(sum));
+                            console.log("answer : ")
+                            console.log(sum-newprice);
+                            console.log("=========End of answer====================== ")
+                           
+                            total = sum-newprice;
+                            console.log("total = "+(sum-newprice));
+                            
+                            // console.log("sum = " +sum+ typeof(sum) +"newpr= " + newPr);
 
-   function getPrix(treatment){
-    //put in case addQty.     
+                        } 
+                
+                        getSum(); //gives sum
+
+                        displaySum(sum); //should disply new total
+                        
+                        resetSelectElement(type);
+        
+        } 
+    
+        
+        function removeItem(item){   
+            
+            
+            //console.log(item); // <tr class="treatment-item" onclick="removeItem(this);"><td>Entrevue et traitement acupuncture Adulte</td><td id="price-1" class="newprice">75$</td><td id="qty-chosen" class="newprice">1</td><td id="pric-1" class="newprice">75$</td></tr>
+             
+            console.log("hello");
+              
+              // console.log(this); //prints the tr tag with td's
+            //    console.log("hello");
+              let tds = item.children;              // console.log(tds); //prints tds html collection
+              newPr = parseInt((tds.item(3).innerHTML).replace('$', ''));
+              console.log("newPr in removeitem = "+newPr); //number
+            //document.getElementById("total").innerHTML = total - newPr;
+             newprArr.push(newPr); //alert(newprArr.length);
+             arr.push(-newPr); //alert("arr= " +arr);
+             sum = document.getElementById('myDiv').innerHTML;
+             displaynewSum();
+            //document.getElementById("myDiv").innerHTML = newPr; //ok 
+            console.log("newpr in removed item = " +newPr+typeof(newPr));  //newPr is number
+            
+            
+            function displaynewSum(){
+
+                newprArr.forEach(el => {
+                sum-=el;
+                console.log(sum+ "  sum in newdisplay")
+              
+             });
+           // document.getElementById('myDiv').innerHTML = sum; 
+            
+             // alert(total + "==final total");console.log(total+ " total in final display");
+            item.parentNode.removeChild(item);
+            //console.log("finalsum= " +sum);
+            document.getElementById('sous-total').innerHTML = "TOTAL : "+(sum)+"$";
+            document.getElementById('calc-total').innerHTML = "PAYE : "+ (sum)+"$";
+                 }      //console.log("finalsum= " +sum);
+                 
+              }
+         
+                
+           
           
-    if(treatment==="Entrevue et traitement acupuncture Adulte"||treatment === "Acupuncture - Suivi Adulte"){
-            prix=75;
+        
+ 
+    let btn = document.getElementById('print');
+    
+    btn.addEventListener('click', print_Facture);
+    
+    function print_Facture(){
+
+        // Remove the print button in css
+        //empty section removed
+    
+      let section= document.getElementById('commands');
+      section.remove();
+      window.print(); 
+      
+      //printWindow.close();
+        
+    }
+    
+    function resetSelectElement(element) {
+    element.selectedIndex = 0;  // first option is selected, or
+    qty=1;                               // -1 for no option selected
+    }
+    function getPrix(treatment){
+        
+                    
+        if(treatment==="Entrevue et traitement acupuncture Adulte"||treatment === "Acupuncture - Suivi Adulte"){
+            prix=75; 
             
         }
         else if(treatment==="Ouverture dossier"){
             prix=15;
-            
+           
         }
         else if(treatment==="Acupuncture esthétique Aculift"){
             prix=115;
@@ -355,7 +466,7 @@ document.getElementById('date').innerHTML+=date.toLocaleDateString('en-US');
         }else if(treatment ==="Acupuncture esthétique visage aiguilles en or"){
             prix = 60;
         }
-       
+        
         else{
 
             prix = 0;
@@ -364,31 +475,44 @@ document.getElementById('date').innerHTML+=date.toLocaleDateString('en-US');
            
         return prix;
     }
+    //======================NOT ACTIVE BELOW ======================
     
-    let btn = document.getElementById('print');
+    function removeEl(treatment,sum){
     
-    btn.addEventListener('click', print_Facture);
-    
-    function print_Facture(){
+    let treats = document.querySelectorAll('.treatment-item');
 
-        // Remove the print button in css
-        //empty section removed
-    
-      let section= document.getElementById('commands');
-      section.remove();
-      window.print(); 
-      
-      //printWindow.close();
- 
+       for(let i = 0; i<treats.length;i++){
+           
+           treats[i].addEventListener('click', function (e){
+           
+           //below does not work because classes. prints 1st amount only
+          //let newPr = document.querySelector('.treatment-item .newprice').innerHTML;
+         
+         // console.log(this); //prints the tr tag with td's
+          let tds = this.children;
+          newPr = parseInt((tds.item(3).innerHTML).replace('$',''));
+          console.log("nwpr = " +newPr);
+          console.log('sum - newpr = ' +(sum-newPr));
+                           
+          //total+=parseInt(newPr);
         
-    }
-    
-  function resetSelectElement(element) {
-    element.selectedIndex = 0;  // first option is selected, or
-    qty=1;                               // -1 for no option selected
-}
-   
-    
+           //let newPr = document.querySelector('.treatment-item :nth-child(4)').innerHTML;
+           //console.log(newPr);
+           
+           this.remove();
+               
+           //getPrix(treatment);
+           
+           //document.getElementById('calc-total').innerHTML = "You paid : "+ newPr+"$";
+           
+           e.preventDefault();
+          
+           console.log ("sum-newpr" + (sum - newPr));
+           //return newPr;
+          
+       })
+     } 
+   }
 </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 :root {
-    --body-bg: rgb(240, 227, 227);
+    --body-bg: rgb(248, 243, 243);
     --white: #ffffff;
     --darkWhite: #ccc;
     --black: #000000;
@@ -8,11 +8,16 @@
     --pageShadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
 }
 .btn-form{
+
+    height:fit-content;
     width:fit-content;
 }
-#text-area{
+#text-area, #text-area1{
 
     border: none;
+}
+.hide {
+    display:none;
 }
 
 @media print {
@@ -33,17 +38,20 @@
 /* //@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap'); */
 
 body {
+
     background-color: var(--body-bg);
     font-size:0.9rem;
 }
    
 
 #calc-total{
+    background-color: rgb(172, 235, 172);
     margin-top:10px;
     height:2.5rem;
     width: 215px;
     text-align: left;
     font-size: larger;
+    color:black;
 }
 .page {
     background: var(--white);
@@ -69,18 +77,21 @@ input, select{
     font-size:1rem;
 }
 .page[size="A4"] {
-    width: 24cm;
-    height: 60cm;
-    overflow: hidden;
-    margin-bottom: 40px;
+    width: 26cm;
+    height: 35cm;
+    overflow:visible;
+    margin-bottom: 100px;
 }
 
 .bb {
     border-bottom: 3px solid var(--darkWhite);
 }
+
 .logo{
-    width: 260;
-    height: 260;
+
+    padding:15px; 
+    height: 200px ; 
+    width:200px;
 }
 Font Include {
     @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap');
@@ -111,12 +122,13 @@ Font Include {
 #contact {
 
     padding:10px;
-    
+    margin-left:20px;
     line-height: 8px;
 }
 #top-border{
-    background-color: #f8eeee;
-    padding:10px;
+    
+    background-color: #f7f3f3;
+    padding:19px;
 }
 .container{
     background-color: white;

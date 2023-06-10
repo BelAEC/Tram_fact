@@ -93,21 +93,18 @@
             <div class="hide" id="myDiv"></div>
             <section class="store-user mt-5">
                 <div class="col-10">
+                    <h4>ADRESSE DE FACTURATION</h4>
+                    <br>
+                    <div style="font-size:1.3rem ; line-height:normal;font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" id="test"></div>
+                    <textarea id="text-area" name="notes" rows="2" ,="" cols="20"></textarea>
+
                     <div class="row bb pb-3">
                         <div class="col-7">
-                            
+                     
                 
-                <form id="form">
-                    <div class = "search-wrapper noprint">
-                    <label for="search" >Search Contacts-type "x" to hide</label>
-                    
-                    <input style="width: 40%" type="search" id="search" data-search>
-                    <button class="btn-form" onclick="resetForm(this);" id="refresh">Reset</button>
-                    <!-- this will be empty and javascript will populate it for us -->
-                    </div>
-                </form>
+               
                           
-        <div class="user-cards hide copy noprint" id="user-cards" data-user-cards-container></div>
+        <div class="user-cards  copy noprint" id="user-cards" data-user-cards-container></div>
     
         <!-- take card and convert iinto template -->
         <!-- create html that doesnt show up on teht page -->
@@ -133,17 +130,24 @@
     
                      </div>
                         <div class="col-5">
+                            <form id="form">
+                                <div class = "search-wrapper noprint">
+                                <label for="search" >Search Contacts-type "x" to hide</label>
+                                
+                                <input style="width: 40%" type="search" id="search" data-search>
+                                <button class="btn-form" onclick="resetForm(this);" id="refresh">Reset</button>
+                                <!-- this will be empty and javascript will populate it for us -->
+                                </div>
+                            </form>
                             
-                            <h4>ADRESSE DE FACTURATION</h4>
-                            <br>
-                            <div style="font-size:1.3rem ; line-height:normal;font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" id="test"></div>
-                            <textarea id="text-area" name="notes" rows="2" ,="" cols="20"></textarea>
                         </div>
                     </div>
                     <div class="row extra-info pt-3">
                         <div class="col-7">
+                            
                         </div>
                         <div class="col-5">
+                          
                             <!-- <p>Deliver Date: <span>10-04.2021</span></p> -->
                         </div>
                     </div>

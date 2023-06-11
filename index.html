@@ -132,7 +132,7 @@
                         <div class="col-5">
                             <form id="form">
                                 <div class = "search-wrapper noprint">
-                                <label for="search" >Search Contacts-type "x" to hide</label>
+                                <label for="search" >Search Contacts: type a name</label>
                                 <input style="width: 40%" type="search" id="search" data-search>
                                 <button class="btn-form" onclick="resetForm(this);" id="refresh">Reset</button>
                                 <!-- this will be empty and javascript will populate it for us -->
@@ -427,8 +427,9 @@ document.getElementById('date').innerHTML+=date.toLocaleDateString('en-US');
       let removeContacts = document.getElementById('user-cards');
       section.remove();
       removeContacts.remove();
-      window.print(); 
-
+     
+      window.print();  
+      
       
       //printWindow.close();
         

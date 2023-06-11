@@ -11,18 +11,22 @@ let contactInfo="";
 let users=[];
 
 
+
 searchInput.addEventListener("input", e => {
     const value = e.target.value.toLowerCase()
     users.forEach(user => {
       const isVisible =
       user.name.toLowerCase().includes(value); 
       
-        user.element.classList.toggle("hide", !isVisible)
+      user.element.classList.toggle("hide", !isVisible)
+             
       
-       
-      if(value === "x"){
+      if(value === ""){
         hideContacts();
-        
+      }else{
+        showContacts();
+      
+    
        
     //   ||user.Email.toLowerCase().includes(value);
        
@@ -30,6 +34,7 @@ searchInput.addEventListener("input", e => {
     })
 
   })
+
   // searchInput.addEventListener("input", e=>{
   
   // })
@@ -112,15 +117,12 @@ fetch('./contactsFinal.json') //this loads black boxes
         Region: user.Region,
         Tel: user.Phone, 
         element : card}
-      
-        
-
+    
     })
    
    
 }) //end of user.map
 let isSelected=false;
-
 
 // function addSelect(){
 //   let mycards =  document.querySelectorAll('.card');
@@ -166,8 +168,6 @@ let isSelected=false;
 //contactsSelected(isSelected);
                    
 // function contactsSelected(isSelected) {
-  
-
 
  function getContacts (button){
     //document.getElementById('btn-card').innerHTML = "";
@@ -176,7 +176,6 @@ let isSelected=false;
     document.getElementById('test').innerHTML = coordinates;
     
  }
-
 
  /*  var tcopy = document.querySelectorAll(".copy");
   //let copied = $(".copy:visible");
@@ -210,6 +209,12 @@ let isSelected=false;
 
   let contacts = document.getElementById('user-cards');
   contacts.style.display = "none";
+  
+ }
+ function showContacts(){
+
+  contacts = document.getElementById('user-cards');
+  contacts.style.display = "block";
   
  }
 

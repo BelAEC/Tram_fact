@@ -59,7 +59,7 @@ searchInput.addEventListener("input", e => {
 //pull in json data via url 
 //   fetch("https://jsonplaceholder.typicode.com/users")
   
-fetch('./contacts.json') //this loads black boxes
+fetch('./contactsFinal.json') //this loads black boxes
 .then(res=>res.json())
 .then(data =>  {
     users = data.map(user=>{
@@ -170,7 +170,7 @@ let isSelected=false;
 
 
  function getContacts (button){
-    document.getElementById('btn-card').innerHTML = "";
+    //document.getElementById('btn-card').innerHTML = "";
     //document.getElementById('user-cards').textContent;
     let coordinates = button.parentNode.textContent+'\n';
     document.getElementById('test').innerHTML = coordinates;

@@ -66,8 +66,8 @@
             <section id="commands">
                 <div id="select-boxes">
                     <!-- <button id="editButton">Ajouter contacts</button> -->
-                    <button id="downloadButton">Download File</button>
-                    <button id="uploadButton">Upload File</button>
+                    <!-- <button id="downloadButton">Download File</button>
+                    <button id="uploadButton">Upload File</button> -->
                 <input type="button" class="noprint btn-warning nav-cancel" id="print" value="Imprimer" >
             <form id="search-Form">
                 <b></b>
@@ -227,8 +227,8 @@
 </div>
     
 <script>
-    document.getElementById("downloadButton").onclick = function() {
-        window.location.href = "contactsFinal.json";
+    /* document.getElementById("downloadButton").onclick = function() {
+        window.location.href = "https://belaec.github.io/Test/contactsFinal.json";
     };
 
     document.getElementById("uploadButton").onclick = function() {
@@ -238,9 +238,9 @@
     document.getElementById("fileInput").onchange = function() {
         var file = this.files[0];
         var xhr = new XMLHttpRequest();
-        xhr.open("PUT", "contactsFinal");
+        xhr.open("PUT", "https://belaec.github.io/Test/contactsFinal.json");
         xhr.send(file);
-    };
+    }; */
 
 // document.getElementById("editButton").onclick = function() {
 // window.open("contactsFinal.json");

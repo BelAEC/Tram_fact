@@ -16,6 +16,8 @@
     
     <link rel="stylesheet" href="styly.css">
     <script src="search.js" defer></script>
+    <script src="https://apis.google.com/js/api.js">
+    </script>
     
 
     <title>Invoice</title>
@@ -63,6 +65,9 @@
             </section>
             <section id="commands">
                 <div id="select-boxes">
+                    <button id="editButton">Ajouter contacts</button>
+                    <!-- <button id="downloadButton">Download File</button>
+                    <button id="uploadButton">Upload File</button> -->
                 <input type="button" class="noprint btn-warning nav-cancel" id="print" value="Imprimer" >
             <form id="search-Form">
                 <b></b>
@@ -94,7 +99,7 @@
             <section class="store-user mt-5">
                 <div class="col-10">
                     <h4>ADRESSE DE FACTURATION</h4>
-                    <br>
+                    <br><br>
                     <div style="font-size:1.3rem ; line-height:normal;font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" id="test"></div>
                     <textarea id="text-area" name="notes" rows="2" ,="" cols="20"></textarea>
 
@@ -121,10 +126,7 @@
                         
                         <div class="body" data-body>email@gmail.com</div>
                         <button id="btn-card" style="height:fit-content;width:fit-content"; data-button onclick= "getContacts(this);"><img src="0-circle.svg" alt="copy"></button>
-                       
-         
-              
-            </div>
+             </div>
         
          </template>
     
@@ -180,8 +182,9 @@
             <section class="balance-info">
                 <div class="row">
                    
-                    <div class="col-6" >
+                    <div class="col-6" > <br><br>
                         <p style="margin-left:8px"class="m-0 font-weight-bold"> Notes : </p>
+                       
                         <textarea id="text-area1" name = "notes" rows = '6', cols = '40'></textarea>
                         <div id="sante">Faites de votre santé une priorité!</div>
                         
@@ -210,26 +213,36 @@
                         <br>
                         <!-- Signature -->
                         <div class="col-12">
-                            <!-- <img src="signature.png" class="img-fluid" alt=""> -->
+                            
                             
                             <p class="text-left m-0 total-style">  Signature: </p>
+                            <img src="signture.png" class="img-fluid" alt="">
                         </div>
                         
                     </div>
                 
             </section>
 
-            <!-- Cart BG -->
-            <!-- <img src="cart.jpg" class="img-fluid cart-bg" alt=""> -->
-
-         
-        <!-- </div> -->
     </div>
 </div>
     
 <script>
 
+document.getElementById("editButton").onclick = function() {
+window.open("contactsFinal.json");
+};
+                    
 
+// gapi.load('client:auth2', function() {
+//   gapi.client.init({
+//     apiKey: 'YOUR_API_KEY',
+//     clientId: 'YOUR_CLIENT_ID',
+//     discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/contacts/v3/rest"],
+//     scope: 'https://www.googleapis.com/auth/contacts.readonly'
+//   }).then(function() {
+//     // The library is now initialized and ready to use.
+//   });
+// });
 
 let date = new Date();
 

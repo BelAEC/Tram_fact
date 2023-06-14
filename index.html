@@ -65,9 +65,9 @@
             </section>
             <section id="commands">
                 <div id="select-boxes">
-                    <button id="editButton">Ajouter contacts</button>
-                    <!-- <button id="downloadButton">Download File</button>
-                    <button id="uploadButton">Upload File</button> -->
+                    <!-- <button id="editButton">Ajouter contacts</button> -->
+                    <button id="downloadButton">Download File</button>
+                    <button id="uploadButton">Upload File</button>
                 <input type="button" class="noprint btn-warning nav-cancel" id="print" value="Imprimer" >
             <form id="search-Form">
                 <b></b>
@@ -227,10 +227,24 @@
 </div>
     
 <script>
+    document.getElementById("downloadButton").onclick = function() {
+        window.location.href = "contactsFinal.json";
+    };
 
-document.getElementById("editButton").onclick = function() {
-window.open("contactsFinal.json");
-};
+    document.getElementById("uploadButton").onclick = function() {
+        document.getElementById("fileInput").click();
+    };
+
+    document.getElementById("fileInput").onchange = function() {
+        var file = this.files[0];
+        var xhr = new XMLHttpRequest();
+        xhr.open("PUT", "contactsFinal");
+        xhr.send(file);
+    };
+
+// document.getElementById("editButton").onclick = function() {
+// window.open("contactsFinal.json");
+// };
                     
 
 // gapi.load('client:auth2', function() {

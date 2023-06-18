@@ -18,6 +18,7 @@
 }
 .hide {
     display:none;
+    border:none;
 }
 
 @media print {
@@ -25,14 +26,16 @@
     .noprint {
       visibility: hidden;
     }
-     #solde {
-        border: none;
-        background-color: rgb(233, 215, 215);
-        min-width: 10px;
-        max-width: max-content;
-        }
+     
         
      }
+     #solde {
+        border: none;
+        /* background-color: rgb(233, 215, 215); */
+        min-width: 10px;
+        max-width: max-content;
+        background-color: rgb(245, 159, 159);
+        }
 
 /* Font Include */
 /* //@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap'); */

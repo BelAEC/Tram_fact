@@ -69,30 +69,42 @@
                     <!-- <button id="downloadButton">Download File</button>
                     <button id="uploadButton">Upload File</button> -->
                 <input type="button" class="noprint btn-warning nav-cancel" id="print" value="Imprimer" >
-            <form id="search-Form">
-                <b></b>
-                 
-                <!-- <button class="refresh" id="refresh-time">img</button> -->
-                <div id="treat1"></div> 
-                <!-- <label for="selJoueur" style="text-align: left; margin-top: 2%;">Faites votre choix</label> -->
-                    <input type="number" class="noprint" id="qtyy" min="0" max="10" value="1" > 
-                    <select class="noprint"  id="type"  name="treatment" onchange="selectTreatment(this);">
-                                <option selected="true" disabled="disabled" selected="selected">Selectionner Traitement</option>
-                                <option>Ouverture dossier </option>
-                                <option>Entrevue et traitement acupuncture Adulte  </option>
-                                <option>Entrevue et traitement acupuncture Moins de 18 ans  </option>
-                                <option>Acupuncture - Suivi Adulte</option>
-                                <option>Acupuncture - Suivi moins de 18 ans</option>
-                                <option>Acupuncture esthétique Aculift</option>
-                                <option>Acupuncture esthétique Aculift aiguilles en or</option>
-                                <option>Acupuncture esthetique Qi Beauty</option>
-                                <option>Acupuncture esthétique visage</option>
-                                <option>Acupuncture esthétique visage</option>
-                                <option>Acupuncture esthétique visage aiguilles en or </option>
-                            
-                        </select> 
+                <div id="searchboxes" style="display:flex; justify-content: space-between">
+                    <form id="form">
+                        <div class = "search-wrapper noprint">
+                        <label for="search"> Search Contacts: type a name</label>
+                        <input style="width: 40%" type="search" id="search" data-search>
+                        <button class="btn-form" onclick="resetForm(this);" id="refresh">Reset</button>
+                        <!-- this will be empty and javascript will populate it for us -->
+                        </div>
+                    </form>
+            
                 
-                </form>
+                    <form id="search-Form">
+                    <b></b>
+                    
+                    <!-- <button class="refresh" id="refresh-time">img</button> -->
+                    <div id="treat1"></div> 
+                    <!-- <label for="selJoueur" style="text-align: left; margin-top: 2%;">Faites votre choix</label> -->
+                        <input type="number" class="noprint" id="qtyy" min="0" max="10" value="1" > 
+                        <select class="noprint"  id="type"  name="treatment" onchange="selectTreatment(this);">
+                                    <option selected="true" disabled="disabled" selected="selected">Selectionner Traitement</option>
+                                    <option>Ouverture dossier </option>
+                                    <option>Entrevue et traitement acupuncture Adulte  </option>
+                                    <option>Entrevue et traitement acupuncture Moins de 18 ans  </option>
+                                    <option>Acupuncture - Suivi Adulte</option>
+                                    <option>Acupuncture - Suivi moins de 18 ans</option>
+                                    <option>Acupuncture esthétique Aculift</option>
+                                    <option>Acupuncture esthétique Aculift aiguilles en or</option>
+                                    <option>Acupuncture esthetique Qi Beauty</option>
+                                    <option>Acupuncture esthétique visage</option>
+                                    <option>Acupuncture esthétique visage</option>
+                                    <option>Acupuncture esthétique visage aiguilles en or </option>
+                                
+                            </select> 
+                    
+                    </form>
+                  </div>
                 </div>  
             </section>
             <div class="hide" id="myDiv"></div>
@@ -100,7 +112,9 @@
                 <div class="col-10">
                     <h4>ADRESSE DE FACTURATION</h4>
                     <br><br>
-                    <div style="font-size:1.3rem ; line-height:normal;font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" id="test"></div>
+                    <div id="test" style="font-size:1.3rem ; line-height:normal;font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" >
+                    
+                    </div>
                     <textarea id="text-area" name="notes" rows="2" ,="" cols="20"></textarea>
 
                     <div class="no print row bb pb-3 ">
@@ -122,9 +136,10 @@
                         <div class="address" data-address>address</div>
                         <div class="Ville" data-ville>Ville</div>
                         <div class="Region" data-region>Region</div>
+                        <div class="CodePostal" data-codePostal>Code Postal</div>
                         <div class="tel" data-tel>Telephone</div>
-                        
                         <div class="body" data-body>email@gmail.com</div>
+                       
                         <button id="btn-card" style="height:fit-content;width:fit-content"; data-button onclick= "getContacts(this);"><img src="0-circle.svg" alt="copy"></button>
              </div>
         
@@ -132,14 +147,7 @@
     
                      </div>
                         <div class="col-5">
-                            <form id="form">
-                                <div class = "search-wrapper noprint">
-                                <label for="search" >Search Contacts: type a name</label>
-                                <input style="width: 40%" type="search" id="search" data-search>
-                                <button class="btn-form" onclick="resetForm(this);" id="refresh">Reset</button>
-                                <!-- this will be empty and javascript will populate it for us -->
-                                </div>
-                            </form>
+                            
                             
                         </div>
                     </div>
@@ -267,7 +275,7 @@ let paraFacture = document.getElementById('facture');
 let p = document.createElement('p');
 
 p.setAttribute('id', 'factureId'); 
- paraFacture.append(p);//appends paragraph with id facture-id to p facture tag
+ paraFacture.append(p);//appends paragrreph with id facture-id to p facture tag
  //let dinvoice="";
 //  let textnode=document.createTextNode(dinvoice);  p.append(textnode);
   

@@ -12,9 +12,16 @@
     height:fit-content;
     width:fit-content;
 }
-#text-area, #text-area1{
-
+#text-area {
+    font-size:1.1rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     border: none;
+}
+#text-area1{
+    font-size:0.7rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border: none;
+
 }
 .hide {
     display:none;

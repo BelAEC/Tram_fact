@@ -57,13 +57,15 @@ body {
    
 
 #calc-total{
+
     background-color: rgb(172, 235, 172);
     margin-top:10px;
     height:2.5rem;
-    width: 215px;
+    width: fit-content;
     text-align: left;
     font-size: larger;
     color:black;
+    
 }
 .page {
     background: var(--white);
@@ -134,9 +136,9 @@ Font Include {
 }
 #contact {
 
-    padding:10px;
-    margin-left:20px;
-    line-height: 8px;
+    padding:8px;
+    margin-left:30px;
+    line-height: 6px;
 }
 #top-border{
     
@@ -306,6 +308,10 @@ tfoot td {
 
     height: 20px;
 }
+treatment-zone{
+    border-bottom:1px black solid;
+}
+
 .total-style{
 
     margin-left:120px;

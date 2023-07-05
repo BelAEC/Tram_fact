@@ -19,9 +19,9 @@ async function pickContact(){
         "getProperties" in navigator.contacts) {
     try {
     const availableProperties = await navigator.contacts.getProperties();
-    if (availableProperties.includes("name")){
-        // if (availableProperties.includes("address") && (availableProperties.includes("email"))) {
-        const contactProperties = ['name', 'tel', 'address', 'Email'];
+        
+        if (availableProperties.includes("address") && (availableProperties.includes("Email"))) {
+        const contactProperties = ['name', 'tel', 'address', 'email'];
         
     
         const contacts = await navigator

@@ -21,7 +21,7 @@ async function pickContact(){
     const availableProperties = await navigator.contacts.getProperties();
         
         if (availableProperties.includes("name")) {
-        const contactProperties = ['name','address','tel','city','region', 'email'];
+        const contactProperties = ['name','address','tel', 'email'];
         
     
         const contacts = await navigator
@@ -38,10 +38,10 @@ async function pickContact(){
         alert("Contact Picker API on your device doesn't support address or email property");
         }
     } catch(error) {
-    console.log("Unexpected error happened in Contact Picker API");
+    alert("Unexpected error happened in Contact Picker API");
     }
     } else {
-    console.log("Your browser doesn't support Contact Picker API");
+    alert("Your browser doesn't support Contact Picker API");
     }
 }
 async function displayContacts(){

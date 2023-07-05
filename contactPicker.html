@@ -20,8 +20,8 @@ async function pickContact(){
     try {
     const availableProperties = await navigator.contacts.getProperties();
         
-        if (availableProperties.includes("address")) {
-        const contactProperties = ['name', 'tel', 'address', 'Email'];
+        if (availableProperties.includes("name")) {
+        const contactProperties = ['name', 'tel', 'address'];
         
     
         const contacts = await navigator
@@ -31,11 +31,11 @@ async function pickContact(){
             {multiple: true}
             );
     
-        yourContact = contacts[0].name +  " " + contacts[0].address + " " + contacts[0].tel + " " + contacts[0].Email;
+        yourContact = contacts[0].name +  " " + contacts[0].address + " " + contacts[0].tel;
         //  console.log("Your first contact: " + contacts[0].name + " " + contacts[0].tel + " " + contacts[0].address);
         
     } else {
-        console.log("Contact Picker API on your device doesn't support address or email property");
+        alert("Contact Picker API on your device doesn't support address or email property");
         }
     } catch(error) {
     console.log("Unexpected error happened in Contact Picker API");

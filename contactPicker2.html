@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact picker</title>
+</head>
+<body>
+
+    <h1>contact picker</h1>
+    <button id="select" onclick="displayContacts()">Selectionner Contacts</button>
+
+    <div id="myDiv"></div>
+    
+    <script>
+
+let yourContact="";
+
+async function pickContact(){
+        
+    const opts = {
+            multiple: false,
+            includeName: true,
+            includeTel: true,
+            includeEmail: true,
+            includeAddress: true
+          };
+          
+          navigator.contacts.select(opts)
+            .then(contacts => {
+              contacts.forEach(contact => {
+                yourContact = contact.name+"<br />" + contact.tel+"<br />"+contact.email;
+                // console.log(contact.name);
+                // console.log(contact.email);
+                // console.log();
+          
+                // Accessing the components of the address object
+                if (contact.address) {
+                  console.log(contact.address.region); // Access the region (e.g., state or province)
+                    yourContact+= contact.address.streetAddress+"<br />"+contact.address.city+"<br />"+contact.address.region+"<br />"+contact.address.postalCode;
+                //   console.log(contact.address.streetAddress); // Access the street address
+                //   console.log(contact.address.city); // Access the city
+                //   console.log(contact.address.region); // Access the region (e.g., state or province)
+                //   console.log(contact.address.postalCode); // Access the postal code
+                  
+                }
+              });
+            })
+            .catch(err => {
+              console.error(err);
+            });
+          
+}
+async function displayContacts(){
+    await pickContact();
+    document.getElementById('myDiv').innerHTML = "contact = " +yourContact;
+}
+</script>
+</body>
+</html>
+

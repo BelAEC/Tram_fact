@@ -14,9 +14,7 @@ let yourContact="";
 
 async function pickContact(){
     
-    let city = address.city;
-    let postalCode = address.postalCode;
-    let street  = address.street;
+   
     
     if ("contacts" in navigator && 
         "select" in navigator.contacts && 
@@ -26,7 +24,9 @@ async function pickContact(){
         
         if (availableProperties.includes("name")) {
         const contactProperties = ['name','address', 'street', 'city', 'postalCode', 'tel', 'email'];
-        
+        let city = address.city;
+        let postalCode = address.postalCode;
+        let street  = address.street;
     
         const contacts = await navigator
             .contacts

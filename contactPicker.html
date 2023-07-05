@@ -38,10 +38,10 @@ async function pickContact(){
         alert("Contact Picker API on your device doesn't support address or email property");
         }
     } catch(error) {
-    alert("Unexpected error happened in Contact Picker API");
+    console.log("Unexpected error happened in Contact Picker API");
     }
     } else {
-    alert("Your browser doesn't support Contact Picker API");
+    console.log("Your browser doesn't support Contact Picker API");
     }
 }
 async function displayContacts(){

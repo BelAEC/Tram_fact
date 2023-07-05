@@ -23,7 +23,7 @@ async function pickContact(){
     const availableProperties = await navigator.contacts.getProperties();
         
         if (availableProperties.includes("name")) {
-        const contactProperties = ['name','address', 'street', 'city', 'postalCode', 'tel', 'email'];
+        const contactProperties = ['name','street', 'city', 'postalCode', 'tel', 'email'];
         let city = address.city;
         let postalCode = address.postalCode;
         let street  = address.street;

@@ -74,6 +74,7 @@
                         <div class = "search-wrapper noprint">
                         <label for="search"> Search Contacts: type a name</label>
                         <input style="width: 65%" type="search" id="search" data-search>
+                        <button id="select" onclick="pickContact()">Selectionner Contacts</button>
                         <button class="btn-form" onclick="resetForm(this);" id="refresh">Reset</button>
                         <!-- this will be empty and javascript will populate it for us -->
                         </div>
@@ -233,6 +234,35 @@
 </div>
     
 <script>
+    async function pickContact(){
+
+if ("contacts" in navigator && 
+    "select" in navigator.contacts && 
+    "getProperties" in navigator.contacts) {
+try {
+const availableProperties = await navigator.contacts.getProperties();
+    
+    if (availableProperties.includes("address")) {
+    const contactProperties = ['name', 'tel', 'address'];
+
+    const contacts = await navigator
+        .contacts
+        .select(
+        contactProperties,
+        {multiple: true}
+        );
+
+    console.log("Your first contact: " + contacts[0].name + " " + contacts[0].tel + " " + contacts[0].address);
+    } else {
+    console.log("Contact Picker API on your device doesn't support address property");
+    }
+} catch(error) {
+console.log("Unexpected error happened in Contact Picker API");
+}
+} else {
+console.log("Your browser doesn't support Contact Picker API");
+}
+}
     /* document.getElementById("downloadButton").onclick = function() {
         window.location.href = "https://belaec.github.io/Test/contactsFinal.json";
     };

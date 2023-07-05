@@ -8,6 +8,7 @@
 <body>
     <h1>contact picker</h1>
     <button id="select" onclick="pickContact()">Selectionner Contacts</button>
+    <div id="myDiv"></div>
     <script>
 
 async function pickContact(){
@@ -25,11 +26,13 @@ async function pickContact(){
             .contacts
             .select(
             contactProperties,
-            {multiple: true}
+            {multiple: false}
             );
     
-        console.log("Your first contact: " + contacts[0].name + " " + contacts[0].tel + " " + contacts[0].address);
-        } else {
+        let yourContact = contacts[0].name + " " + contacts[0].tel + " " + contacts[0].address;
+        //  console.log("Your first contact: " + contacts[0].name + " " + contacts[0].tel + " " + contacts[0].address);
+        document.getElementById('myDiv').innerHTML = "contact = " +yourContact;
+    } else {
         console.log("Contact Picker API on your device doesn't support address property");
         }
     } catch(error) {

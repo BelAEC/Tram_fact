@@ -13,9 +13,7 @@
 let yourContact="";
 
 async function pickContact(){
-    
-   
-    
+        
     if ("contacts" in navigator && 
         "select" in navigator.contacts && 
         "getProperties" in navigator.contacts) {
@@ -24,18 +22,19 @@ async function pickContact(){
         
         if (availableProperties.includes("name")) {
         const contactProperties = ['name','street', 'city', 'postalCode', 'tel', 'email'];
-        let city = address.city;
-        let postalCode = address.postalCode;
-        let street  = address.street;
+        // let city = address.city;
+        // let postalCode = address.postalCode;
+        // let street  = address.street;
     
         const contacts = await navigator
+
             .contacts
             .select(
             contactProperties,
             {multiple: true}
             );
     
-        yourContact = contacts[0].name +  "<br />" + contacts[0].street + "<br />"+ contacts[0].city+ contacts[0].postalCode + "<br />"  + contacts[0].tel + "<br />" +contacts[0].email;
+        yourContact = contacts[0].name +  "<br />" + contacts[0].address.street + "<br />"+contacts[0].address.city+ contacts[0].address.postalCode + "<br />"  + contacts[0].tel + "<br />" +contacts[0].email;
         //  console.log("Your first contact: " + contacts[0].name + " " + contacts[0].tel + " " + contacts[0].address);
         
     } else {

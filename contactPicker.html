@@ -9,6 +9,7 @@
     <h1>contact picker</h1>
     <button id="select" onclick="displayContacts()">Selectionner Contacts</button>
     <div id="myDiv"></div>
+    <div id="newtest">new test = </div>
     <div id="address"></div>
 
     <script>
@@ -43,12 +44,14 @@ async function pickContact(){
         
         let arr = [];
         if(contacts[0].address.length > 0){
+            document.getElementById('newtest').innerHTML = "contacts[0].address and length"+contacts[0].address.length + " "+ contacts[0].address;
            // if (contacts.address) {
-            contacts.forEach(element => {
+            contacts[0].address.forEach(element => {
                 
-                arr.push(element.address.street);
+                arr.push(element);
                 
-            });document.getElementById("address").innerHTML = "arr =" +arr;
+            });
+            document.getElementById("address").innerHTML = "arr =" +arr;
                 //   let street = contacts[0].address.street; // Access the street address
                 // let address = contacts[0].address;
                 // document.getElementById("address").innerHTML = "address= " + address;

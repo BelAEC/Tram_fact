@@ -29,7 +29,6 @@ async function pickContact(){
         // let street  = address.street;
     
         const contacts = await navigator
-
             .contacts
             .select(
             contactProperties,
@@ -40,7 +39,8 @@ async function pickContact(){
         // yourContact = contacts[0].name +  "<br />" + contacts[0].address.street + "<br />" + contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;
         
         if(contacts[0].address.length > 0){
-        yourContact = contacts[0].name +  "<br />" + address.contacts[0].street + "<br />" + contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;
+        yourContact = contacts[0].name +  "<br />" + address.contacts[0].street;
+        //  + "<br />" + contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;
        
         }else{
 

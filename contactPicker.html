@@ -25,7 +25,9 @@ async function pickContact(){
     try {
     
         const availableProperties = await navigator.contacts.getProperties();
-        
+        let temp = [...availableProperties];
+
+        document.getElementById('newtest').innerHTML = "props= " +temp;
         if (availableProperties.includes("name")) {
         const contactProperties = ['name','address', 'tel', 'email'];
         // let city = address.city;

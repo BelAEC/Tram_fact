@@ -49,7 +49,8 @@ async function pickContact(){
         if(contacts[0].address.length > 0){
             
             let tempAddress=[...contacts[0].address];
-            document.getElementById('newtest').innerHTML = "tempaddress = " + tempAddress; //without street it returns address object
+
+            document.getElementById('newtest').innerHTML = "tempaddress = " + tempAddress.city; //without street it returns address object
             // document.getElementById('newtest').innerHTML = "contacts[0].address and length"+contacts[0].address[0].length + " contacts[0].address.street  "+ contacts[0].address.street; //without street it returns address object
            // if (contacts.address) {
             contacts[0].address.forEach(element => {

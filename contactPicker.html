@@ -13,7 +13,7 @@
     <div id="address"></div>
 
     <script>
-        document.getElementById("address").innerHTML = "start5";
+        document.getElementById("address").innerHTML = "start6";
 let yourContact = "";
 
 async function pickContact(){
@@ -44,7 +44,7 @@ async function pickContact(){
         
         let arr = [];
         if(contacts[0].address.length > 0){
-            document.getElementById('newtest').innerHTML = "contacts[0].address and length"+contacts[0].address.length + " "+ contacts[0].address;
+            document.getElementById('newtest').innerHTML = "contacts[0].address and length"+contacts[0].address[0].length + " contacts[0].address.street  "+ contacts[0].address.street; //without street it returns address object
            // if (contacts.address) {
             contacts[0].address.forEach(element => {
                 

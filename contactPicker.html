@@ -42,17 +42,17 @@ async function pickContact(){
         // yourContact = contacts[0].name +  "<br />" + contacts.address.street + "<br />"+contacts.address.city+ "<br />"+contacts.address.region + "<br />"+contacts.address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;
         // yourContact = contacts[0].name +  "<br />" + contacts[0].address.street + "<br />" + contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;
         
-        let arr = [];
-        if(contacts[0].address.length > 0){
-            document.getElementById('newtest').innerHTML = "contacts[0].address and length"+contacts[0].address[0].length + " contacts[0].address.street  "+ contacts[0].address.street; //without street it returns address object
-           // if (contacts.address) {
-            contacts[0].address.forEach(element => {
+        // let arr = [];
+        // if(contacts[0].address.length > 0){
+        //     document.getElementById('newtest').innerHTML = "contacts[0].address and length"+contacts[0].address[0].length + " contacts[0].address.street  "+ contacts[0].address.street; //without street it returns address object
+        //    // if (contacts.address) {
+        //     contacts[0].address.forEach(element => {
                 
-                arr.push(element);
+        //         arr.push(element);
                 
-            });
-            document.getElementById("address").innerHTML = "arr =" +arr;
-                //   let street = contacts[0].address.street; // Access the street address
+        //     });
+            document.getElementById("address").innerHTML = "newtest"
+                   let street = address.streetAddress || " "; // Access the street address
                 // let address = contacts[0].address;
                 // document.getElementById("address").innerHTML = "address= " + address;
                 // let street = address.street;
@@ -61,9 +61,9 @@ async function pickContact(){
                  // let region = contacts.address.region; // Access the region (e.g., state or province)
         //let postalCode = contacts.address.postalCode; // Access the postal code
              
-        yourContact = contacts[0].name +  "<br />" + "testing array"; 
+        yourContact = contacts[0].name +  "<br />" + "testing new street address" + street; 
 
-              document.getElementById('address').innerHTML = "reference point address.street";       
+              document.getElementById('address').innerHTML = yourContact + "reference point address.street";
        
         //  + "<br />" + contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;
        

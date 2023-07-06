@@ -41,9 +41,10 @@ async function pickContact(){
         
         
         if(contacts[0].address.length > 0){
-            const contactProperties = ['name','address', 'tel', 'email'];
+        const contactProperties = ['name','address', 'tel', 'email'];
         let selectedContact = contacts[0];
-        let address = selectedContact.address[0];
+        let address = selectedContact.address;
+        document.getElementById('newtest').innerHTML = "address = " + address.region;
         let city = address.locality || '';
         // let postalCode = address.postalCode;
          let street  = address.streetAddress|| '';;
@@ -62,7 +63,7 @@ async function pickContact(){
                  // let region = contacts.address.region; // Access the region (e.g., state or province)
         //let postalCode = contacts.address.postalCode; // Access the postal code
              
-              yourContact = contacts[0].name +  "<br />" + "testing " + street;
+              yourContact = contacts[0].name +  "<br />" + "testing " + city;
         
               document.getElementById('address').innerHTML = "reference point address.street";       
        

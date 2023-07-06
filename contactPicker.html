@@ -28,6 +28,7 @@ async function pickContact(){
         let temp = [...availableProperties];
 
         document.getElementById('newtest').innerHTML = "props= " +temp;
+        document.getElementById('newtest').innerHTML = "props= " +availableProperties;
         if (availableProperties.includes("name")) {
         const contactProperties = ['name','address', 'tel', 'email'];
         // let city = address.city;
@@ -46,7 +47,9 @@ async function pickContact(){
         
         
         if(contacts[0].address.length > 0){
-            document.getElementById('newtest').innerHTML = "contacts[0].address and length"+contacts[0].address[0].length + " contacts[0].address.street  "+ contacts[0].address.street; //without street it returns address object
+            let tempAddress=[...contact[0].address];
+            document.getElementById('newtest').innerHTML = "tempaddress = " + tempAddress; //without street it returns address object
+            // document.getElementById('newtest').innerHTML = "contacts[0].address and length"+contacts[0].address[0].length + " contacts[0].address.street  "+ contacts[0].address.street; //without street it returns address object
            // if (contacts.address) {
             contacts[0].address.forEach(element => {
                 

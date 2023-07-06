@@ -39,7 +39,7 @@ async function pickContact(){
         
         // yourContact = contacts[0].name +  "<br />" + contacts.address.street + "<br />"+contacts.address.city+ "<br />"+contacts.address.region + "<br />"+contacts.address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;
         // yourContact = contacts[0].name +  "<br />" + contacts[0].address.street + "<br />" + contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;
-        document.getElementById('address').innerHTML = "test";
+        
         
         if(contacts[0].address.length > 0){
            // if (contacts.address) {
@@ -48,7 +48,7 @@ async function pickContact(){
                   let region = contacts.address.region; // Access the region (e.g., state or province)
                   let postalCode = contacts.address.postalCode; // Access the postal code
                   
-                
+        document.getElementById('address').innerHTML = "test" + street;       
         yourContact = contacts[0].name +  "<br />" + street;
         //  + "<br />" + contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;
        

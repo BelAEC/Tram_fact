@@ -40,7 +40,7 @@ async function pickContact(){
 
         // yourContact = contacts[0].name +  "<br />" + contacts.address.street + "<br />"+contacts.address.city+ "<br />"+contacts.address.region + "<br />"+contacts.address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;
         // yourContact = contacts[0].name +  "<br />" + contacts[0].address.street + "<br />" + contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;
-        document.getElementById('address').innerHTML = contacts[0].address.street;
+        document.getElementById('address').innerHTML = contacts[0].address.street + contacts[0].address[0].street;
         if(contacts[0].address.length > 0){
         yourContact = contacts[0].name +  "<br />" + address.contacts[0].street;
         //  + "<br />" + contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;

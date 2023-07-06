@@ -13,7 +13,7 @@
     <div id="address"></div>
 
     <script>
-        document.getElementById("address").innerHTML = "start6";
+        document.getElementById("address").innerHTML = "start7";
 let yourContact = "";
 
 async function pickContact(){
@@ -27,10 +27,7 @@ async function pickContact(){
         const availableProperties = await navigator.contacts.getProperties();
         
         if (availableProperties.includes("name")) {
-        const contactProperties = ['name','address', 'tel', 'email'];
-        // let city = address.city;
-        // let postalCode = address.postalCode;
-        // let street  = address.street;
+       
     
         const contacts = await navigator
             .contacts
@@ -44,12 +41,18 @@ async function pickContact(){
         
         
         if(contacts[0].address.length > 0){
-
-            document.getElementById('newtest').innerHTML = "contacts[0].address and length"+contacts[0].address[0].length + " contacts[0].address.street  "+ contacts[0].address.street; //without street it returns address object
+            const contactProperties = ['name','address', 'tel', 'email'];
+        let selectedContact = contacts[0];
+        let address = selectedContact.address[0];
+        let city = address.locality || '';
+        // let postalCode = address.postalCode;
+         let street  = address.streetAddress|| '';;
+            
+         document.getElementById('newtest').innerHTML = "city - " + city + " contacts[0].address.street  "+ address.streetAddress; //without street it returns address object
            // if (contacts.address) {
             
             // document.getElementById("address").innerHTML = "newtest";
-                  let street = address.streetAddress || '';
+                 
                    // Access the street address
                 // let address = contacts[0].address;
                 // document.getElementById("address").innerHTML = "address= " + address;

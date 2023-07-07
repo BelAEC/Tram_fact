@@ -4,7 +4,8 @@
   <title>Contact Picker Example</title>
 </head>
 <body>
-  <button onclick="pickContact()">Pick a Contact</button>
+     <div id="test">push 1</div>
+    <button onclick="pickContact()">Pick a Contact</button>
   <div id="contactInfo"></div>
 
   <script>
@@ -24,7 +25,7 @@
       contactInfoDiv.innerHTML = '';
 
       // Name
-      const name = contact.name;
+      const name = contact[0].name;
       const nameElement = document.createElement('p');
       nameElement.textContent = `Name: ${name}` + name;
       contactInfoDiv.appendChild(nameElement);
@@ -33,13 +34,13 @@
       if (contact.address && contact.address.length > 0) {
         const address = contact.address[0];
         const addressElement = document.createElement('p');
-        addressElement.textContent = `Address: ${address.streetAddress}, ${address.city}, ${address.region}, ${address.postalCode}`;
+        addressElement.textContent = `Address: ${address.street}, ${address.city}, ${address.region}, ${address.postalCode}`;
         contactInfoDiv.appendChild(addressElement);
       }
 
       // Phone
       if (contact.tel && contact.tel.length > 0) {
-        const phone = contact.tel[0].value;
+        const phone = contact.tel.value; //I left value here for testing
         const phoneElement = document.createElement('p');
         phoneElement.textContent = `Phone: ${tel}`;
         contactInfoDiv.appendChild(phoneElement);
@@ -47,7 +48,7 @@
 
       // Email
       if (contact.email && contact.email.length > 0) {
-        const email = contact[0].email;
+        const email = contact.email;
         const emailElement = document.createElement('p');
         emailElement.textContent = "coorected "  +email;
         contactInfoDiv.appendChild(emailElement);

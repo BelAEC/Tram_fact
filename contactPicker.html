@@ -9,7 +9,7 @@
     <h1>contact picker</h1>
     <button id="select" onclick="displayContacts()">Selectionner Contacts</button>
     <div id="myDiv"></div>
-    <div id="newtest">new test = </div>
+    <div id="test">new test = </div>
     <div id="address"></div>
 
     <script>
@@ -27,10 +27,11 @@ async function pickContact(){
         const availableProperties = await navigator.contacts.getProperties();
         let temp = [...availableProperties];
 
-        document.getElementById('newtest').innerHTML = "props= " +temp;
-        document.getElementById('newtest').innerHTML = "props= " +availableProperties;
+        document.getElementById('test').innerHTML = "props= " +temp;
+        // document.getElementById('test').innerHTML = "props= " +availableProperties;
         if (availableProperties.includes("name")) {
         const contactProperties = ['name','address', 'tel', 'email'];
+        
         // let city = address.city;
         // let postalCode = address.postalCode;
         // let street  = address.street;
@@ -48,10 +49,12 @@ async function pickContact(){
         
         if(contacts[0].address.length > 0){
             
-            let tempAddress=[...contacts[0].address[0]];
+
+            tempAddress=[...contacts[0].address[0]];
+            
 
             document.getElementById('newtest').innerHTML = "tempaddress = " + tempAddress; //withcityout street it returns address object
-            document.getElementById('newtest').innerHTML = "tempaddress = " + tempAddress.city; //without street it returns address object
+            //document.getElementById('newtest').innerHTML = "tempaddress = " + tempAddress.city; //without street it returns address object
 
             // document.getElementById('newtest').innerHTML = "contacts[0].address and length"+contacts[0].address[0].length + " contacts[0].address.street  "+ contacts[0].address.street; //without street it returns address object
            // if (contacts.address) {

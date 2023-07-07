@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Picker Example</title>
+</head>
+<body>
+  <button onclick="pickContact()">Pick a Contact</button>
+  <div id="contactInfo"></div>
+
+  <script>
+    // Function to handle the contact picker
+    async function pickContact() {
+      try {
+        const contacts = await navigator.contacts.select(['name', 'address', 'email', 'tel']);
+        displayContact(contacts[0]);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    // Function to display the selected contact on the web page
+    function displayContact(contact) {
+      const contactInfoDiv = document.getElementById('contactInfo');
+      contactInfoDiv.innerHTML = '';
+
+      // Name
+      const name = contact.name ? contact.name[0].displayName : '';
+      const nameElement = document.createElement('p');
+      nameElement.textContent = `Name: ${name}`;
+      contactInfoDiv.appendChild(nameElement);
+
+      // Address
+      if (contact.address && contact.address.length > 0) {
+        const address = contact.address[0];
+        const streetAddress = address.streetAddress ? address.streetAddress : '';
+        const locality = address.locality ? address.locality : '';
+        const region = address.region ? address.region : '';
+        const postalCode = address.postalCode ? address.postalCode : '';
+
+        const addressElement = document.createElement('p');
+        addressElement.textContent = `Address: ${streetAddress}, ${locality}, ${region}, ${postalCode}`;
+        contactInfoDiv.appendChild(addressElement);
+      }
+
+      // Phone
+      if (contact.tel && contact.tel.length > 0) {
+        const phone = contact.tel[0].value ? contact.tel[0].value : '';
+        const phoneElement = document.createElement('p');
+        phoneElement.textContent = `Phone: ${phone}`;
+        contactInfoDiv.appendChild(phoneElement);
+      }
+
+      // Email
+      if (contact.email && contact.email.length > 0) {
+        const email = contact.email[0].value ? contact.email[0].value : '';
+        const emailElement = document.createElement('p');
+        emailElement.textContent = `Email: ${email}`;
+        contactInfoDiv.appendChild(emailElement);
+      }
+    }
+  </script>
+</body>
+</html>

@@ -5,7 +5,7 @@
 </head>
 <body>
   <button onclick="pickContact()">Pick a Contact</button>
-  <div id="contactInfo"></div>
+  <div id="contactInfo"> </div>
 
   <script>
     // Function to handle the contact picker
@@ -21,7 +21,7 @@
     // Function to display the selected contact on the web page
     function displayContact(contact) {
       const contactInfoDiv = document.getElementById('contactInfo');
-      contactInfoDiv.innerHTML = '';
+      contactInfoDiv.innerHTML = 'this is a test';
 
       // Name
       const name = contact.name[0].displayName;

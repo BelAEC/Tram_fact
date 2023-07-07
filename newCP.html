@@ -17,16 +17,16 @@
         console.error(error);
       }
     }
-
+    
     // Function to display the selected contact on the web page
     function displayContact(contact) {
       const contactInfoDiv = document.getElementById('contactInfo');
       contactInfoDiv.innerHTML = '';
 
       // Name
-      const name = contact.name[0].displayName;
+      const name = contact.name;
       const nameElement = document.createElement('p');
-      nameElement.textContent = `Name: ${name}`;
+      nameElement.textContent = `Name: ${name}` + name;
       contactInfoDiv.appendChild(nameElement);
 
       // Address
@@ -49,7 +49,7 @@
       if (contact.email && contact.email.length > 0) {
         const email = contact[0].email;
         const emailElement = document.createElement('p');
-        emailElement.textContent = `Email: ${email}`;
+        emailElement.textContent = "coorected "  +email;
         contactInfoDiv.appendChild(emailElement);
       }
     }

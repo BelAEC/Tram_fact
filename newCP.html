@@ -4,7 +4,7 @@
   <title>Contact Picker Example</title>
 </head>
 <body>
-     <div id="test">push 1</div>
+     <div id="test">push 2</div>
     <button onclick="pickContact()">Pick a Contact</button>
   <div id="contactInfo"></div>
 
@@ -20,35 +20,35 @@
     }
     
     // Function to display the selected contact on the web page
-    function displayContact(contact) {
+    function displayContact() {
       const contactInfoDiv = document.getElementById('contactInfo');
       contactInfoDiv.innerHTML = '';
 
       // Name
-      const name = contact[0].name;
+      const name = contacts[0].name;
       const nameElement = document.createElement('p');
       nameElement.textContent = `Name: ${name}` + name;
       contactInfoDiv.appendChild(nameElement);
 
       // Address
-      if (contact.address && contact.address.length > 0) {
-        const address = contact.address[0];
+      if (contacts[0].address && contacts[0].address.length > 0) {
+        const address = contacts[0].address[0];
         const addressElement = document.createElement('p');
         addressElement.textContent = `Address: ${address.street}, ${address.city}, ${address.region}, ${address.postalCode}`;
         contactInfoDiv.appendChild(addressElement);
       }
 
       // Phone
-      if (contact.tel && contact.tel.length > 0) {
-        const phone = contact.tel.value; //I left value here for testing
+      if (contacts[0].tel && contacts[0].tel.length > 0) {
+        const phone = contacts[0].tel; //I left value here for testing
         const phoneElement = document.createElement('p');
         phoneElement.textContent = `Phone: ${tel}`;
         contactInfoDiv.appendChild(phoneElement);
       }
 
       // Email
-      if (contact.email && contact.email.length > 0) {
-        const email = contact.email;
+      if (contacts[0].email && contacts[0].email.length > 0) {
+        const email = contacts[0].email;
         const emailElement = document.createElement('p');
         emailElement.textContent = "coorected "  +email;
         contactInfoDiv.appendChild(emailElement);

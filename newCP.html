@@ -33,7 +33,7 @@
       if (contact.address && contact.address.length > 0) {
         const address = contact.address[0];
         const addressElement = document.createElement('p');
-        addressElement.textContent = `Address: ${address.streetAddress}, ${address.locality}, ${address.region}, ${address.postalCode}`;
+        addressElement.textContent = `Address: ${address.street}, ${address.city}, ${address.region}, ${address.postalCode}`;
         contactInfoDiv.appendChild(addressElement);
       }
 
@@ -41,7 +41,7 @@
       if (contact.tel && contact.tel.length > 0) {
         const phone = contact.tel[0].value;
         const phoneElement = document.createElement('p');
-        phoneElement.textContent = `Phone: ${phone}`;
+        phoneElement.textContent = `Phone: ${tel}`;
         contactInfoDiv.appendChild(phoneElement);
       }
 

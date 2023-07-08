@@ -16,7 +16,7 @@
     <script>
     
 let yourContact = "";
-
+let addressProps = [];
 async function pickContact(){
         
     if ("contacts" in navigator && 
@@ -47,7 +47,7 @@ async function pickContact(){
             {multiple: true}
             );
              
-            let addressProps = [];
+            
             contacts[0].address.forEach(el=>{
                 addressProps.push(el);
             })

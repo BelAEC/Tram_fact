@@ -56,9 +56,9 @@ async function pickContact(){
             yourContact = "your contacts if address  = " + contacts[0].name +  "<br />" + contacts[0].address[0].streetAddress + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + "<br />"+contacts[0].address[0].postalCode + contacts[0].tel + "<br />" +contacts[0].email;
         // yourContact = contacts[0].name +  "<br />" + contacts[0].address.street + "<br />" + contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;
                 
-        if(contacts[0].address[0].length > 0){
+        if(contacts[0].address.length > 0){
             
-            document.getElementById('addlen').innerHTML = "address laegnth = " +contacts[0].address[0].length;
+            document.getElementById('addlen').innerHTML = "address length = " +contacts[0].address.length;
             tempAddress=[...contacts[0].address];
             
 

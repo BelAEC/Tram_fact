@@ -10,7 +10,7 @@
     <button id="select" onclick="displayContacts()">Selectionner Contacts</button>
     <div id="myDiv"></div>
     <div id="test">test= </div>
-    <div id="address">push 5 = </div>
+    <div id="address">push 7 = </div>
     <div id="contact"> contact full goes here </div>
 
     <script>
@@ -46,11 +46,9 @@ async function pickContact(){
             contactProperties,
             {multiple: true}
             );
-            const address = contact.addresses[0].formatted_address;
-
-            yourContact = "your contactss version formatted version = " + contacts[0].name +  "<br />" + contacts[0].formatted_address + "<br />"+contacts[0].email;
+            const address = contact[0].address[0].formatted_address;
             
-            // yourContact = "your contactss = " + contacts[0].name +  "<br />" + contacts[0].address[0].street + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + "<br />"+contacts[0].address[0].postalCode + contacts[0].tel + "<br />" +contacts[0].email;
+            yourContact = "your contactss and formatted= "+"<br />" + address + contacts[0].name +  "<br />" + contacts[0].address[0].street + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + "<br />"+contacts[0].address[0].postalCode + contacts[0].tel + "<br />" +contacts[0].email;
         // yourContact = contacts[0].name +  "<br />" + contacts[0].address.street + "<br />" + contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;
                 
         if(contacts[0].address.length > 0){

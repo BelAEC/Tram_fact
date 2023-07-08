@@ -10,7 +10,7 @@
     <button id="select" onclick="displayContacts()">Selectionner Contacts</button>
     <div id="myDiv"></div>
     <div id="test">test= </div>
-    <div id="address">push1 = </div>
+    <div id="address">push2 = </div>
     <div id="contact"> contact full goes here </div>
 
     <script>
@@ -61,7 +61,8 @@ async function pickContact(){
 
             // document.getElementById('newtest').innerHTML = "contacts[0].address and length"+contacts[0].address[0].length + " contacts[0].address.street  "+ contacts[0].address.street; //without street it returns address object
            // if (contacts.address) {
-            contacts[0].address[0].forEach(element => {
+            contacts[0].address.forEach(element => {
+
                 document.getElementById('address').innerHTML += "addesseleent = " + element;
                    
             });
@@ -75,7 +76,7 @@ async function pickContact(){
                  // let region = contacts.address.region; // Access the region (e.g., state or province)
         //let postalCode = contacts.address.postalCode; // Access the postal code
              
-        yourContact = contacts[0].name +  "<br />" + contacts[0].address.street + "<br />"+contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;      
+        yourContact = "your long contact " +contacts[0].name +  "<br />" + contacts[0].address.street + "<br />"+contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;      
         // yourContact = "contact name= " +contacts[0].name;
 
               document.getElementById('contact').innerHTML = "full contact = " +yourContact;       
@@ -93,7 +94,7 @@ async function pickContact(){
     }
     
     else {
-
+        document.getElementbyId("test").innerHTML  = "wer are in the name and email only section";
        
         console.log("Contact Picker API on your device doesn't support address or email property");
         }

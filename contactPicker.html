@@ -10,7 +10,7 @@
     <button id="select" onclick="displayContacts()">Selectionner Contacts</button>
     <div id="myDiv"></div>
     <div id="test">test= </div>
-    <div id="address">push 5 = </div>
+    <div id="address">push props = </div>
     <div id="contact"> contact full goes here </div>
 
     <script>
@@ -47,8 +47,12 @@ async function pickContact(){
             {multiple: true}
             );
              
+            let addressProps = [];
+            contacts[0].address.forEach(el=>{
+                addressProps.push(el);
+            })
             
-            yourContact = "your contactss = " + contacts[0].name +  "<br />" + contacts[0].address[0].street + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + "<br />"+contacts[0].address[0].postalCode + contacts[0].tel + "<br />" +contacts[0].email;
+            yourContact = "your contactss push 8 = " + contacts[0].name +  "<br />" + contacts[0].address[0].streetAddress + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + "<br />"+contacts[0].address[0].postalCode + contacts[0].tel + "<br />" +contacts[0].email;
         // yourContact = contacts[0].name +  "<br />" + contacts[0].address.street + "<br />" + contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;
                 
         if(contacts[0].address.length > 0){
@@ -109,7 +113,8 @@ async function pickContact(){
 }
 async function displayContacts(){
     await pickContact();
-    document.getElementById('myDiv').innerHTML = "contact = " + yourContact;
+    document.getElementById('test').innerHTML = "address props =  " +addressProps; 
+    document.getElementById('myDiv').innerHTML = "contacts in display contacts = " + yourContact;
 }
 </script>
 </body>

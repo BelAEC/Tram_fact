@@ -24,7 +24,7 @@ async function pickContact(){
         "getProperties" in navigator.contacts) {
         
     try {
-        let addressProps = [];
+    
         const availableProperties = await navigator.contacts.getProperties();
         let temp = [...availableProperties];
         
@@ -47,17 +47,13 @@ async function pickContact(){
             {multiple: true}
             );
              
-            
-            contacts[0].address.forEach(el=>{
-                addressProps[0].push(el);
-            })
-            
+                   
             yourContact = "your contactss push 8 = " + contacts[0].name +  "<br />" + contacts[0].address[0].streetAddress + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + "<br />"+contacts[0].address[0].postalCode + contacts[0].tel + "<br />" +contacts[0].email;
         // yourContact = contacts[0].name +  "<br />" + contacts[0].address.street + "<br />" + contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;
                 
         if(contacts[0].address.length > 0){
             
-            document.getElementById('addlen').innerHTML = contacts[0].address[0].length;
+            
             tempAddress=[...contacts[0].address];
             
 
@@ -66,11 +62,7 @@ async function pickContact(){
 
             // document.getElementById('newtest').innerHTML = "contacts[0].address and length"+contacts[0].address[0].length + " contacts[0].address.street  "+ contacts[0].address.street; //without street it returns address object
            // if (contacts.address) {
-            contacts[0].address.forEach(element => {
-
-                document.getElementById('address').innerHTML += "contacts[0].address.forEacht(element) = " + element;
-                   
-            });
+            
             // document.getElementById("address").innerHTML = "newtest";
                 //   let street = contacts[0].address.street; // Access the street address
                 // let address = contacts[0].address;
@@ -89,7 +81,7 @@ async function pickContact(){
         //  + "<br />" + contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;
        
         //this works
-        } else {
+        }else{
             
             yourContact= contacts[0].name+"<br />"+contacts[0].tel+"<br />" + contacts[0].email;
         }
@@ -111,7 +103,6 @@ async function pickContact(){
     console.log("Your browser doesn't support Contact Picker API");
     }
 }
-
 async function displayContacts(){
     await pickContact();
     document.getElementById('test').innerHTML = "address props =  ";

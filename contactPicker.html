@@ -10,14 +10,13 @@
     <button id="select" onclick="displayContacts()">Selectionner Contacts</button>
     <div id="myDiv"></div>
     <div id="test">test= </div>
-    <div id="address">push props = </div>
+    <div id="address">push 5 = </div>
     <div id="contact"> contact full goes here </div>
-    <div id="div1"> [...contacts[0].address] = </div>
-
+    <div id="div1">div1 =  </div>
     <script>
     
 let yourContact = "";
-let addressProps = [];
+
 async function pickContact(){
         
     if ("contacts" in navigator && 
@@ -48,8 +47,8 @@ async function pickContact(){
             {multiple: true}
             );
              
-            
-            contacts[0].address[0].forEach(el=>{
+            let addressProps = [];
+            contacts[0].address.forEach(el=>{
                 addressProps.push(el);
             })
             
@@ -62,7 +61,7 @@ async function pickContact(){
             tempAddress=[...contacts[0].address];
             
 
-            document.getElementById('div1').innerHTML = "tempaddress = " + tempAddress; //withcityout street it returns address object
+            document.getElementById('newtest').innerHTML = "tempaddress = " + tempAddress; //withcityout street it returns address object
             //document.getElementById('newtest').innerHTML = "tempaddress = " + tempAddress.city; //without street it returns address object
 
             // document.getElementById('newtest').innerHTML = "contacts[0].address and length"+contacts[0].address[0].length + " contacts[0].address.street  "+ contacts[0].address.street; //without street it returns address object
@@ -114,7 +113,7 @@ async function pickContact(){
 }
 async function displayContacts(){
     await pickContact();
-    // document.getElementById('div1').innerHTML = "address props =  " +addressProps; 
+    document.getElementById('test').innerHTML = "address props =  " +addressProps; 
     document.getElementById('myDiv').innerHTML = "contacts in display contacts = " + yourContact;
 }
 </script>

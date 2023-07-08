@@ -13,7 +13,7 @@
     <div id="address">push 5 = </div>
     <div id="contact"> contact full goes here </div>
     <div id="div1">div1 =  </div>
-    <div id="addlen">div1 =  </div>
+    <div id="addlen">addlen =  </div>
     <script>
     
 let yourContact = "";
@@ -53,7 +53,7 @@ async function pickContact(){
                 addressProps.push(el);
             })
             
-            yourContact = "your contactss push 8 = " + contacts[0].name +  "<br />" + contacts[0].address[0].streetAddress + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + "<br />"+contacts[0].address[0].postalCode + contacts[0].tel + "<br />" +contacts[0].email;
+            yourContact = "your contactss push 8 = " + contacts[0].name +  "<br />" + contacts[0].address[0].street + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + "<br />"+contacts[0].address[0].postalCode + contacts[0].tel + "<br />" +contacts[0].email;
         // yourContact = contacts[0].name +  "<br />" + contacts[0].address.street + "<br />" + contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;
                 
         if(contacts[0].address.length > 0){
@@ -69,7 +69,7 @@ async function pickContact(){
            // if (contacts.address) {
             contacts[0].address.forEach(element => {
 
-                document.getElementById('address').innerHTML += "contacts[0].address.forEacht(element) = " + element;
+                document.getElementById('address').innerHTML += "contacts[0].address.forEacht(element) = " +element;
                    
             });
             // document.getElementById("address").innerHTML = "newtest";
@@ -82,17 +82,17 @@ async function pickContact(){
                  // let region = contacts.address.region; // Access the region (e.g., state or province)
         //let postalCode = contacts.address.postalCode; // Access the postal code
              
-        yourContact = "your long contact " +contacts[0].name +  "<br />" + contacts[0].address.street + "<br />"+contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;      
+        let yournewContact = "your long contact " +contacts[0].name +  "<br />" + contacts[0].address[0].street + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + "<br />"+contacts[0].address[0].postalCode + contacts[0].tel + "<br />" +contacts[0].email;      
         // yourContact = "contact name= " +contacts[0].name;
 
-              document.getElementById('contact').innerHTML = "full contact = " +yourContact;       
+              document.getElementById('contact').innerHTML = "full new contact = " +yournewContact;       
        
         //  + "<br />" + contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;
        
         //this works
         } else {
             
-            yourContact= contacts[0].name+"<br />"+contacts[0].tel+"<br />" + contacts[0].email;
+            yourContact = contacts[0].name+"<br />"+contacts[0].tel+"<br />" + contacts[0].email;
         }
 
         //  console.log("Your first contact: " + contacts[0].name + " " + contacts[0].tel + " " + contacts[0].address);
@@ -100,7 +100,8 @@ async function pickContact(){
     }
     
     else {
-        document.getElementbyId("test").innerHTML  = "wer are in the name and email only section";
+
+        document.getElementbyId("test").innerHTML  = "we are in the name and email only section";
        
         console.log("Contact Picker API on your device doesn't support address or email property");
         }
@@ -115,7 +116,7 @@ async function pickContact(){
 
 async function displayContacts(){
     await pickContact();
-    document.getElementById('test').innerHTML = "address props =  ";
+    document.getElementById('test').innerHTML += "your new contacts =  "+yournewContact;
     document.getElementById('myDiv').innerHTML = "contacts in display contacts = " + yourContact;
 }
 </script>

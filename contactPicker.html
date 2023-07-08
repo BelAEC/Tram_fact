@@ -58,14 +58,14 @@ async function pickContact(){
             tempAddress=[...contacts[0].address];
             
 
-            document.getElementById('test').innerHTML = "tempaddress = " + tempAddress; //withcityout street it returns address object
+            document.getElementById('test').innerHTML = "tempaddress in test = " + tempAddress; //withcityout street it returns address object
             //document.getElementById('newtest').innerHTML = "tempaddress = " + tempAddress.city; //without street it returns address object
 
             // document.getElementById('newtest').innerHTML = "contacts[0].address and length"+contacts[0].address[0].length + " contacts[0].address.street  "+ contacts[0].address.street; //without street it returns address object
            // if (contacts.address) {
             
             // document.getElementById("address").innerHTML = "newtest";
-                //   let street = contacts[0].address.street; // Access the street address
+                // let street = contacts[0].address.street; // Access the street address
                 // let address = contacts[0].address;
                 // document.getElementById("address").innerHTML = "address= " + address;
                 // let street = address.street;
@@ -74,7 +74,7 @@ async function pickContact(){
                  // let region = contacts.address.region; // Access the region (e.g., state or province)
         //let postalCode = contacts.address.postalCode; // Access the postal code
              
-        yourContact = "your long contact " +contacts[0].name +  "<br />" + contacts[0].address[0].street + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + "<br />"+contacts[0].address[0].postalCode + contacts[0].tel + "<br />" +contacts[0].email;      
+        yourContact = "your long contact " +contacts[0].name +  "<br />" + contacts[0].address[0].address + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + "<br />"+contacts[0].address[0].postalCode + contacts[0].tel + "<br />" +contacts[0].email;      
         // yourContact = "contact name= " +contacts[0].name;
 
               document.getElementById('contact').innerHTML = "full contact = " +yourContact;       

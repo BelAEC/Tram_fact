@@ -9,7 +9,7 @@
     <h1>contact picker</h1>
     <button id="select" onclick="displayContacts()">Selectionner Contacts</button>
     <div id="myDiv"></div>
-    <div id="test">new test = </div>
+    <div id="test">test= </div>
     <div id="address"></div>
 
     <script>
@@ -26,11 +26,15 @@ async function pickContact(){
     
         const availableProperties = await navigator.contacts.getProperties();
         let temp = [...availableProperties];
+        
 
-        document.getElementById('test').innerHTML = "props= " +temp;
+        "props= " +temp;
         // document.getElementById('test').innerHTML = "props= " +availableProperties;
-        if (availableProperties.includes("name")) {
-        const contactProperties = ['name','address', 'tel', 'email'];
+         const contactProperties = ['name','address', 'tel', 'email'];
+         document.getElementById('address').innerHTML = contactProperties[1];
+         if (availableProperties.includes("name")) {
+                    
+           
         
         // let city = address.city;
         // let postalCode = address.postalCode;
@@ -49,7 +53,7 @@ async function pickContact(){
         
         if(contacts[0].address.length > 0){
             
-
+            
             tempAddress=[...contacts[0].address[0]];
             
 

@@ -48,12 +48,13 @@ async function pickContact(){
             {multiple: true}
             );
                              
-            let addressProps = contacts[0].address[0];
-            let arr=[];
-            addressProps.forEach(el=>{
-                arr.push(el);
-            })
-            yourContact = arr + "your contactss push 9 = " + contacts[0].name +  "<br />" + addressProps.street +"<br /> " +addressProps.streetAddress + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + "<br />"+contacts[0].address[0].postalCode + contacts[0].tel + "<br />" +contacts[0].email;
+            let addressProps = contacts[0].address;
+            for (let key in objectProp4) {
+            arr.push( objectProp4[key]);
+
+}
+            
+            yourContact = "your contactss push 9 = "+arr+"<br />" +contacts[0].name +  "<br />" + addressProps.street +"<br /> " +addressProps.streetAddress + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + "<br />"+contacts[0].address[0].postalCode + contacts[0].tel + "<br />" +contacts[0].email;
             
           
             // yourContact = contacts[0].name +  "<br />" + contacts[0].address.street + "<br />" + contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;

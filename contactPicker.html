@@ -41,7 +41,7 @@ async function pickContact(){
              // let postalCode = address.postalCode;
                  // let street  = address.street;
     
-        const contacts = await navigator
+           const contacts = await navigator
             .contacts
             .select(
             contactProperties,
@@ -56,7 +56,8 @@ async function pickContact(){
                 
             let addressElements = "address elements";
                 
-                if(contacts[0].address.length > 0){
+            if(contacts[0].address[0] && contacts[0].address.length>0){
+            
             
             
             tempAddress=[...contacts[0].address[0]]; //

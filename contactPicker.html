@@ -47,7 +47,8 @@ async function pickContact(){
             contactProperties,
             {multiple: true}
             );
-                             
+               
+            
             let addressProps = contacts[0].address[0];
             for (let key in addressProps) {
             arr.push( addressProps[key]);
@@ -67,10 +68,10 @@ async function pickContact(){
             
             tempAddress=[...contacts[0].address[0]]; //
 
-            tempAddress.forEach(el=>{
-            addressElements += el;
+            for(let key1 in tempAddress){
+            addressElements += tempAddress[key1];
 
-            })
+            }
 
             document.getElementById('test').innerHTML = "addressdelements xxxxxx " + addressElements; //withcityout street it returns address object
             //document.getElementById('newtest').innerHTML = "tempaddress = " + tempAddress.city; //without street it returns address object

@@ -60,7 +60,7 @@ async function pickContact(){
           
             // yourContact = contacts[0].name +  "<br />" + contacts[0].address.street + "<br />" + contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;
                 
-            let addressElements = "address elements";
+            let addressElements = "";
                 
             if(contacts[0].address[0] && contacts[0].address.length>0){
             
@@ -68,8 +68,8 @@ async function pickContact(){
             
             tempAddress=[...contacts[0].address[0]]; //
 
-            for(let key1 in tempAddress){
-            addressElements += tempAddress[key1];
+            for(let i=0; i<tempAddress.length;i++){
+            addressElements += tempAddress[i];
 
             }
 

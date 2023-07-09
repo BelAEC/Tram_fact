@@ -10,7 +10,7 @@
     <button id="select" onclick="displayContacts()">Selectionner Contacts</button>
     <div id="myDiv">my Dovv = </div>
     <div id="test">test= </div>
-    <div id="address">pushy = </div>
+    <div id="address">pushing = </div>
     <div id="contact"> contact full goes here </div>
     <div id="div1">div1 =  </div>
     <div id="problems">div1 =  </div>
@@ -54,17 +54,18 @@ async function pickContact(){
                 yourAddress+=element;
             });
             // yourContact = contacts[0].name +  "<br />" + contacts[0].address.street + "<br />" + contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;
-                
-        if(contacts[0].address.length > 0){
+                let contactElements = "address elements";
+               if(contacts[0].address.length > 0){
             
-            let addressElements = "address elements";
+            
             tempAddress=[...contacts[0].address[0]]; //
+
             tempAddress.forEach(el=>{
-                addressElements+= el;
+                addressElements += el;
 
             })
 
-            document.getElementById('test').innerHTML = "address elements " + addressElements; //withcityout street it returns address object
+            document.getElementById('test').innerHTML = "address " + addressElements; //withcityout street it returns address object
             //document.getElementById('newtest').innerHTML = "tempaddress = " + tempAddress.city; //without street it returns address object
 
             // document.getElementById('newtest').innerHTML = "contacts[0].address and length"+contacts[0].address[0].length + " contacts[0].address.street  "+ contacts[0].address.street; //without street it returns address object

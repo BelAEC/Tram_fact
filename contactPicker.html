@@ -28,40 +28,37 @@ async function pickContact(){
     
         const availableProperties = await navigator.contacts.getProperties();
         let temp = [...availableProperties];
-        
+ 
 
-        "props= " +temp;
         // document.getElementById('test').innerHTML = "props= " +availableProperties;
          const contactProperties = ['name','address', 'tel', 'email'];
          
         
-         if (availableProperties.includes("name")) {
+            if (availableProperties.includes("name")) {
               
                 // let city = address.city;
              // let postalCode = address.postalCode;
                  // let street  = address.street;
-    
-        const contacts = await navigator
-            .contacts
-            .select(
-            contactProperties,
-            {multiple: true}
-            );
-                             
+        
+                const contacts = await navigator
+                    .contacts
+                    .select(
+                    contactProperties,
+                    {multiple: true}
+                    );
+                                    
             
-            yourContact = contacts[0].name +  "<br />" + " "  +" " +contacts[0].address[0].addressLine + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + "<br />"+contacts[0].address[0].postalCode + contacts[0].tel + "<br />" +contacts[0].email;
+                yourContact = contacts[0].name +  "<br />" + " "  +" " +contacts[0].address[0].addressLine + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + "<br />"+contacts[0].address[0].postalCode + contacts[0].tel + "<br />" +contacts[0].email;
             
           
             // yourContact = contacts[0].name +  "<br />" + contacts[0].address.street + "<br />" + contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;
                 
-            let addressElements = "address elements";
-                
                 if(contacts[0].address.length > 0){
             
             
-            tempAddress=[...contacts[0].address[0]]; //
+                //tempAddress=[...contacts[0].address[0]]; //
             
-            document.getElementById('test').innerHTML = "addressdelements test " + addressElements; //withcityout street it returns address object
+                //document.getElementById('test').innerHTML = "addressdelements test " + addressElements; 
             //document.getElementById('newtest').innerHTML = "tempaddress = " + tempAddress.city; //without street it returns address object
 
             // document.getElementById('newtest').innerHTML = "contacts[0].address and length"+contacts[0].address[0].length + " contacts[0].address.street  "+ contacts[0].address.street; //without street it returns address object
@@ -80,6 +77,7 @@ async function pickContact(){
         //  + "<br />" + contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;
        
         //this works
+        
         } else {
             
             yourContact= contacts[0].name+"<br />"+contacts[0].tel+"<br />" + contacts[0].email;
@@ -104,7 +102,7 @@ async function pickContact(){
 }
 async function displayContacts(){
     await pickContact();
-    document.getElementById('myDiv').innerHTML = "contacts in display contacts = " + yourContact;
+    document.getElementById('myDiv').innerHTML = "</br>" + yourContact;
 }
 </script>
 </body>

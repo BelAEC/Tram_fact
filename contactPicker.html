@@ -10,7 +10,7 @@
     <button id="select" onclick="displayContacts()">Selectionner Contacts</button>
     <div id="myDiv">my Dovv = </div>
     <div id="test">test= </div>
-    <div id="address">push 5 = </div>
+    <div id="address">pushy = </div>
     <div id="contact"> contact full goes here </div>
     <div id="div1">div1 =  </div>
     <div id="problems">div1 =  </div>
@@ -57,11 +57,14 @@ async function pickContact(){
                 
         if(contacts[0].address.length > 0){
             
-            
+            let addressElements = "address elements";
             tempAddress=[...contacts[0].address[0]]; //
-            
+            tempAddress.forEach(el=>{
+                addressElements+= el;
 
-            document.getElementById('test').innerHTML = "tempaddress + tempAddress with address [0] = " + tempAddress; //withcityout street it returns address object
+            })
+
+            document.getElementById('test').innerHTML = "address elements " + addressElements; //withcityout street it returns address object
             //document.getElementById('newtest').innerHTML = "tempaddress = " + tempAddress.city; //without street it returns address object
 
             // document.getElementById('newtest').innerHTML = "contacts[0].address and length"+contacts[0].address[0].length + " contacts[0].address.street  "+ contacts[0].address.street; //without street it returns address object

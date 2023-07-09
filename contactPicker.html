@@ -55,22 +55,24 @@ async function pickContact(){
             
             })
 
-
+            
             yourContact = "your contactss push 8 = " + contacts[0].name +  "<br />" + contacts[0].address[0].street+" "  + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + "<br />"+contacts[0].address[0].postalCode + contacts[0].tel + "<br />" +contacts[0].email;
             
           
             // yourContact = contacts[0].name +  "<br />" + contacts[0].address.street + "<br />" + contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;
-             tempAddress=[...contacts[0].address[0]]; //
-
-                    tempAddress.forEach(el=>{
-                    addressElements += el;
-
-                    })   
-
+                
             let addressElements = "address elements";
                 
                 if(contacts[0].address.length > 0){
-          
+            
+            
+            tempAddress=[...contacts[0].address[0]]; //
+
+            tempAddress.forEach(el=>{
+            addressElements += el;
+
+            })
+
             document.getElementById('test').innerHTML = "address " + addressElements; //withcityout street it returns address object
             //document.getElementById('newtest').innerHTML = "tempaddress = " + tempAddress.city; //without street it returns address object
 
@@ -119,7 +121,7 @@ async function pickContact(){
 }
 async function displayContacts(){
     await pickContact();
-    document.getElementById('div1').innerHTML = " address= arr" +arr;
+    document.getElementById('div1').innerHTML = "your address= nothing" 
     document.getElementById('myDiv').innerHTML = "contacts in display contacts = " + yourContact;
 }
 </script>

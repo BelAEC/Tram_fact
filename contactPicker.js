@@ -47,7 +47,7 @@ async function pickContact(){
     }
 }
 
-async function displayContacts(){
-    await pickContact();
-    document.getElementById('test').innerHTML = "</br>" + yourContact;
-}
+// async function displayContacts(){
+//     await pickContact();
+//     document.getElementById('test').innerHTML = "</br>" + yourContact;
+// }

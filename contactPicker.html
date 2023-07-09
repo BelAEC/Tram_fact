@@ -8,12 +8,12 @@
 <body>
     <h1>contact picker</h1>
     <button id="select" onclick="displayContacts()">Selectionner Contacts</button>
-    <div id="myDiv">my Dovv = </div>
-    <div id="test">test= </div>
+    <div id="myDiv"></div>
+    <!-- <div id="test">test= </div>
     <div id="address">push 5 = </div>
     <div id="contact"> contact full goes here </div>
     <div id="div1">div1 =  </div>
-    <div id="problems">div1 =  </div>
+    <div id="problems">div1 =  </div> -->
     <script>
     
 let yourContact = "";
@@ -49,7 +49,7 @@ async function pickContact(){
             );
                              
             
-            yourContact = "your contactss push 8 = " + contacts[0].name +  "<br />" + " "  +" " +contacts[0].address[0].addressLine + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + "<br />"+contacts[0].address[0].postalCode + contacts[0].tel + "<br />" +contacts[0].email;
+            yourContact = contacts[0].name +  "<br />" + " "  +" " +contacts[0].address[0].addressLine + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + "<br />"+contacts[0].address[0].postalCode + contacts[0].tel + "<br />" +contacts[0].email;
             
           
             // yourContact = contacts[0].name +  "<br />" + contacts[0].address.street + "<br />" + contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;
@@ -60,12 +60,7 @@ async function pickContact(){
             
             
             tempAddress=[...contacts[0].address[0]]; //
-
-            tempAddress.forEach(el=>{
-            addressElements += el;
-
-            })
-
+            
             document.getElementById('test').innerHTML = "addressdelements test " + addressElements; //withcityout street it returns address object
             //document.getElementById('newtest').innerHTML = "tempaddress = " + tempAddress.city; //without street it returns address object
 
@@ -81,16 +76,11 @@ async function pickContact(){
                   // let city = contacts.address.city; // Access the city
                  // let region = contacts.address.region; // Access the region (e.g., state or province)
         //let postalCode = contacts.address.postalCode; // Access the postal code
-             
-        yourContact = "your long contact " +contacts[0].name +  "<br />" + contacts[0].address[0].address + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + "<br />"+contacts[0].address[0].postalCode + contacts[0].tel + "<br />" +contacts[0].email;      
-        // yourContact = "contact name= " +contacts[0].name;
-
-              document.getElementById('contact').innerHTML = "full contact = " +yourContact;       
        
         //  + "<br />" + contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;
        
         //this works
-        }else{
+        } else {
             
             yourContact= contacts[0].name+"<br />"+contacts[0].tel+"<br />" + contacts[0].email;
         }
@@ -114,7 +104,6 @@ async function pickContact(){
 }
 async function displayContacts(){
     await pickContact();
-    document.getElementById('div1').innerHTML = "your address= nothing";
     document.getElementById('myDiv').innerHTML = "contacts in display contacts = " + yourContact;
 }
 </script>

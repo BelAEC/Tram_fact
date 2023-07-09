@@ -48,9 +48,9 @@ async function pickContact(){
             {multiple: true}
             );
                              
-            let addressProps = contacts[0].address;
+            let addressProps = contacts[0].address[0];
             for (let key in addressProps) {
-            arr.push( objectProp4[key]);
+            arr.push( addressProps[key]);
 
 }
             

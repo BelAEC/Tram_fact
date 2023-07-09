@@ -47,10 +47,16 @@ async function pickContact(){
             contactProperties,
             {multiple: true}
             );
-             
-                
             
-            yourContact = "your contactss push 8 = " + contacts[0].name +  "<br />" + contacts[0].address[0]+" " + contacts[0].address[1] +" " +contacts[0].address[0] + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + "<br />"+contacts[0].address[0].postalCode + contacts[0].tel + "<br />" +contacts[0].email;
+            let arr=[];
+            function getaddress()
+            contacts[0].address[0].forEach(el=>{
+            arr.push(el)
+            return arr;
+            })
+
+            
+            yourContact = "your contactss push 8 = " +arr + contacts[0].name +  "<br />" + contacts[0].address[0].street+" " + contacts[0].address[1] +" " +contacts[0].address[0] + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + "<br />"+contacts[0].address[0].postalCode + contacts[0].tel + "<br />" +contacts[0].email;
             
           
             // yourContact = contacts[0].name +  "<br />" + contacts[0].address.street + "<br />" + contacts[0].address.city+ "<br />"+contacts[0].address.region + "<br />"+contacts[0].address.postalCode + contacts[0].tel + "<br />" +contacts[0].email;

@@ -117,10 +117,10 @@
             <section class="store-user mt-5">
                 <div class="col-10">
                     <h4>ADRESSE DE FACTURATION</h4>
-                    <br>
+                    
                     <div id="test" style="font-size:1.3rem ; line-height:normal;font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" >
-                     testing
                     </div>
+                    <div id="problem"></div>
                     <textarea id="text-area" name="notes" rows="1" , cols="35"></textarea>
                        
                     <div class="no print row pb-3 ">
@@ -165,9 +165,7 @@
                     </div>
                 </div>
             </section>
-            <div id="test" style="font-size:1.3rem ; line-height:normal;font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" >
-                testing2
-               </div>
+            
             <section class="product-area mt-4">
                 <table class="table table-hover bb">
                     <thead>
@@ -245,7 +243,7 @@ let yourContact= "";
 
 async function displayContacts(){
     await pickContact();
-     document.getElementById('test').innerHTML = "</br>" + yourContact;
+     document.getElementById('test').innerHTML = yourContact;
     //  document.getElementById('test1').innerHTML = "</br>" + yourContact;
     
 }  

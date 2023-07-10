@@ -28,6 +28,7 @@ async function pickContact(){
         yourContact = contacts[0].name +  "<br />"  +contacts[0].address[0].addressLine + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + ", "+contacts[0].address[0].postalCode +"<br />"+ contacts[0].tel + "<br />" +contacts[0].email;   
         
         }else{
+
              yourContact= contacts[0].name+"<br />"+contacts[0].tel+"<br />" + contacts[0].email;
         }
   
@@ -45,6 +46,7 @@ async function pickContact(){
     } else {
     console.log("Your browser doesn't support Contact Picker API");
     }
+    
 }
 
 // async function displayContacts(){

@@ -254,17 +254,17 @@ async function displayContacts(){
     
 } 
  async function sendEmail(){
-    await pickContact();
-   // if(contact[0].address[0].email){
+    //await pickContact();
+    if(contact[0].address[0].email){
     // if(document.getElementById('test').innerHTML!==""){
-        let testemailAddress = "bel@mail.com";
+        //let testemailAddress = "bel@mail.com";
         // let emailAddress = document.getElementById("test").textContent;
-        //let emailAddress = contact[0].address[0].email;
-        console.log(testemailAddress);
+        let emailAddress = contact[0].address[0].email;
+        //console.log(testemailAddress);
     
        //let sendEmail = document.getElementById("send");
                        
-            window.location.href="mailto:" + testemailAddress;
+            window.location.href="mailto:" + emailAddress;
         
 
    //  }else{
@@ -273,8 +273,6 @@ async function displayContacts(){
   //  }
 }
  
-
-
 let date = new Date();
 
 //date = date.toLocaleDateString('en-US');//alert(date);

@@ -25,7 +25,7 @@ async function pickContact(){
             if(contacts[0].address.length > 0){
             
              
-        yourContact = contacts[0].name +  "<br />" + " "  +" " +contacts[0].address[0].addressLine + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + "<br />"+contacts[0].address[0].postalCode + contacts[0].tel + "<br />" +contacts[0].email;   
+        yourContact = contacts[0].name +  "<br />"  +contacts[0].address[0].addressLine + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + ", "+contacts[0].address[0].postalCode +"<br />"+ contacts[0].tel + "<br />" +contacts[0].email;   
         
         }else{
              yourContact= contacts[0].name+"<br />"+contacts[0].tel+"<br />" + contacts[0].email;
@@ -34,7 +34,7 @@ async function pickContact(){
     }
     
     else {
-        document.getElementbyId("test").innerHTML  = "wer are in the name and email only section";
+        document.getElementbyId("problem").innerHTML  = "could not find contact";
        
         console.log("Contact Picker API on your device doesn't support address or email property");
         }

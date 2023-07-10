@@ -26,7 +26,8 @@ async function pickContact(){
             
                 
         yourContact = contacts[0].name +  "<br />"  +contacts[0].address[0].addressLine + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + ", "+contacts[0].address[0].postalCode +"<br />"+ contacts[0].tel + "<br />" +contacts[0].email;   
-        let emailAddress = contacts[0].address[0].email;
+        emailAddress = contacts[0].address[0].email;
+
         }else{
 
              yourContact= contacts[0].name+"<br />"+contacts[0].tel+"<br />" + contacts[0].email;

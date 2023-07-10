@@ -79,7 +79,7 @@
                         <button id="select" onclick="displayContacts(this)">Selectionner Contacts</button>
                        
                         <!-- <button class="btn-form" onclick="resetForm(this);" id="refresh">Reset</button> -->
-                        <button id ="send" onClick="sendEmail()";>Send</button>
+                        <button id ="send" onClick="sendEmail(this)";>Send</button>
                         
                         
                         </div>
@@ -254,12 +254,12 @@ async function displayContacts(){
     
 } 
  async function sendEmail(){
-    //await pickContact();
-    if(contact[0].address[0].email){
+    await pickContact();
+    if(contact[0].address[0].email>0){
     // if(document.getElementById('test').innerHTML!==""){
         //let testemailAddress = "bel@mail.com";
         // let emailAddress = document.getElementById("test").textContent;
-        let emailAddress = contact[0].address[0].email;
+        emailAddress = contact[0].address[0].email;
         //console.log(testemailAddress);
     
        //let sendEmail = document.getElementById("send");

@@ -27,6 +27,8 @@ async function pickContact(){
                 
         yourContact = contacts[0].name +  "<br />"  +contacts[0].address[0].addressLine + "<br />"+contacts[0].address[0].city+ "<br />"+contacts[0].address[0].region + ", "+contacts[0].address[0].postalCode +"<br />"+ contacts[0].tel + "<br />" +contacts[0].email;   
         emailAddress = contacts[0].address[0].email;
+        
+
 
         }else{
 
@@ -34,6 +36,7 @@ async function pickContact(){
         }
   
     }
+
     
     else {
         document.getElementbyId("problem").innerHTML  = "could not find contact";
@@ -48,6 +51,25 @@ async function pickContact(){
     console.log("Your browser doesn't support Contact Picker API");
     }
 
+}
+async function sendEmail(){
+    await displayContact();
+    //if(contact[0].address[0].email>0){
+    // if(document.getElementById('test').innerHTML!==""){
+        //let testemailAddress = "bel@mail.com";
+        // let emailAddress = document.getElementById("test").textContent;
+       // emailAddress = contact[0].address[0].email;
+        //console.log(testemailAddress);
+    
+       //let sendEmail = document.getElementById("send");
+                       
+            window.location.href="mailto:" + emailAddress;
+        
+
+//      }else{
+
+//        document.getElementById('problem').innerHTML = "Email address not found";
+//    }
 }
 
 // async function displayContacts(){

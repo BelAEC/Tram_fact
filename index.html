@@ -253,25 +253,7 @@ async function displayContacts(){
          //  document.getElementById('test1').innerHTML = "</br>" + yourContact;
     
 } 
- async function sendEmail(){
-    await pickContact();
-    if(contact[0].address[0].email>0){
-    // if(document.getElementById('test').innerHTML!==""){
-        //let testemailAddress = "bel@mail.com";
-        // let emailAddress = document.getElementById("test").textContent;
-        emailAddress = contact[0].address[0].email;
-        //console.log(testemailAddress);
-    
-       //let sendEmail = document.getElementById("send");
-                       
-            window.location.href="mailto:" + emailAddress;
-        
-
-     }else{
-
-       document.getElementById('problem').innerHTML = "Email address not found";
-   }
-}
+ 
  
 let date = new Date();
 

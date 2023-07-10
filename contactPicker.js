@@ -52,8 +52,8 @@ async function pickContact(){
     }
 
 }
-async function sendEmail(){
-    await displayContact();
+function sendEmail(){
+   // await displayContacts();
     //if(contact[0].address[0].email>0){
     // if(document.getElementById('test').innerHTML!==""){
         //let testemailAddress = "bel@mail.com";

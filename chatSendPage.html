@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Send Webpage to Email</title>
+</head>
+<body>
+  <button onclick="selectContact()">Select Contact</button>
+  <script>
+    function selectContact() {
+      if ('contacts' in navigator) {
+        navigator.contacts.select(['email']).then(function (contacts) {
+          if (contacts.length > 0) {
+            var selectedEmail = contacts[0].email[0].value;
+            sendEmail(selectedEmail);
+          } else {
+            console.log('No contacts selected.');
+          }
+        }).catch(function (err) {
+          console.error(err);
+        });
+      } else {
+        console.log('The contacts API is not supported.');
+      }
+    }
+
+    function sendEmail(email) {
+      var subject = 'Check out this webpage!';
+      var body = 'Hey, I found this webpage and thought you might be interested: ' + window.location.href;
+      var mailtoUrl = 'mailto:' + email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
+      // Open the user's email client
+      window.location.href = mailtoUrl;
+    }
+  </script>
+</body>
+</html>

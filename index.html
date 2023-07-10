@@ -249,14 +249,14 @@ let emailAddress = "";
 async function displayContacts(){
     await pickContact();
      document.getElementById('test').innerHTML = yourContact;
-     
+     return emailAddress;
          //  document.getElementById('test1').innerHTML = "</br>" + yourContact;
     
 } 
  
-function sendEmail(){
+function sendEmail(emailAddress){
 
-   // await displayContacts();
+     displayContacts();
     //if(contact[0].address[0].email>0){
     // if(document.getElementById('test').innerHTML!==""){
         //let testemailAddress = "bel@mail.com";

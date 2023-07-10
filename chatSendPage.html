@@ -1,34 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Send Webpage to Email</title>
+  <title>Print Webpage as PDF and Send</title>
 </head>
 <body>
-  <button onclick="selectContact()">Select Contact</button>
+  <button onclick="printAndSend()">Print and Send PDF</button>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
   <script>
+    function printAndSend() {
+      // Generate PDF from the webpage
+      const element = document.documentElement;
+      const options = {
+        margin: [10, 10, 10, 10], // Top, right, bottom, left margins (in mm)
+        filename: 'webpage.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+      };
+
+      html2pdf().set(options).from(element).save().then(function () {
+        selectContact();
+      }).catch(function (error) {
+        console.error('Error generating PDF:', error);
+      });
+    }
+
     function selectContact() {
       if ('contacts' in navigator) {
         navigator.contacts.select(['email']).then(function (contacts) {
           if (contacts.length > 0) {
-            var selectedEmail = contacts[0].email[0].value;
-            sendEmail(selectedEmail);
+            var selectedEmail = getEmailFromContact(contacts[0]);
+            if (selectedEmail) {
+              sendEmail(selectedEmail);
+            } else {
+              console.log('No email address found in the selected contact.');
+            }
           } else {
             console.log('No contacts selected.');
           }
         }).catch(function (err) {
-          console.error(err);
+          console.error('Error selecting contact:', err);
         });
       } else {
         console.log('The contacts API is not supported.');
       }
     }
 
+    function getEmailFromContact(contact) {
+      if (contact.email && contact.email.length > 0 && contact.email[0].value) {
+        return contact.email[0].value;
+      } else {
+        return null;
+      }
+    }
+
     function sendEmail(email) {
-      var subject = 'Check out this webpage!';
-      var body = 'Hey, I found this webpage and thought you might be interested: ' + window.location.href;
+      var subject = 'Check out this PDF!';
+      var body = 'Hey, I generated a PDF from a webpage and thought you might be interested. Please find it attached.';
       var mailtoUrl = 'mailto:' + email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 
-      // Open the user's email client
+      // Open the email client with the PDF attached
       window.location.href = mailtoUrl;
     }
   </script>

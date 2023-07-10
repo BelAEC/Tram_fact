@@ -62,6 +62,7 @@ async function pickContact(){
 }
 
 async function displayContacts(){
+   
     await pickContact();
     document.getElementById('myDiv').innerHTML = "</br>" + yourContact;
 }

@@ -244,7 +244,7 @@
 
 <script>
 let yourContact= "";
-let emailAddress = "hello@mail.com";
+//let emailAddress = "";
 
 async function displayContacts(){
     await pickContact();
@@ -253,11 +253,18 @@ async function displayContacts(){
          //  document.getElementById('test1').innerHTML = "</br>" + yourContact;
     
 } 
- 
-function sendEmail(emailAddress){
+async function displayEmail(){
 
-     displayContacts();
-     
+     await pickContact();
+     document.getElementById('problem').innerHTML = "emailAddress = " +emailAddress;
+ }
+ 
+ 
+
+function sendEmail(){
+
+     pickContact();
+     displayEmail();
          //if(contact[0].address[0].email>0){
     // if(document.getElementById('test').innerHTML!==""){
         //let testemailAddress = "bel@mail.com";

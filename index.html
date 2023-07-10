@@ -67,9 +67,7 @@
             </section>
             <section id="commands">
                 <div id="select-boxes">
-                    <!-- <button id="editButton">Ajouter contacts</button> -->
-                    <!-- <button id="downloadButton">Download File</button>
-                    <button id="uploadButton">Upload File</button> -->
+                   
                 <input type="button" class="noprint btn-danger nav-cancel" id="print" value="Imprimer" >
                
                 <div id="searchboxes" style="display:flex; justify-content: space-between">
@@ -80,7 +78,9 @@
                         <input style="width: 65%" type="search" id="search" data-search> -->
                         <button id="select" onclick="displayContacts(this)">Selectionner Contacts</button>
                        
-                        <button class="btn-form" onclick="resetForm(this);" id="refresh">Reset</button>
+                        <!-- <button class="btn-form" onclick="resetForm(this);" id="refresh">Reset</button> -->
+                        <button id ="send" onClick="sendEmail()";>Send</button>
+                        
                         
                         </div>
                     <!-- </form> -->
@@ -119,7 +119,9 @@
                     <h4>ADRESSE DE FACTURATION</h4>
                     
                     <div id="test" style="font-size:1.3rem ; line-height:normal;font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" >
+                     <!-- <a href = "mailto: example@mail.com">Send Email</a> -->
                     </div>
+                   
                     <div id="problem"></div>
                     <textarea id="text-area" name="notes" rows="1" , cols="35"></textarea>
                        
@@ -237,16 +239,41 @@
 
     </div>
 </div>
-<script type="text/javascript"  src="contactPicker.js" defer ></script>    
+<script type="text/javascript"  src="contactPicker.js" defer ></script>
+<!-- <script type="text/javascript"  src="sendEmail.js" defer ></script> -->
+
 <script>
 let yourContact= "";
+let emailAddress = "";
 
 async function displayContacts(){
     await pickContact();
      document.getElementById('test').innerHTML = yourContact;
-    //  document.getElementById('test1').innerHTML = "</br>" + yourContact;
+     
+         //  document.getElementById('test1').innerHTML = "</br>" + yourContact;
     
-}  
+} 
+ async function sendEmail(){
+    await pickContact();
+   // if(contact[0].address[0].email){
+    // if(document.getElementById('test').innerHTML!==""){
+        let testemailAddress = "bel@mail.com";
+        // let emailAddress = document.getElementById("test").textContent;
+        //let emailAddress = contact[0].address[0].email;
+        console.log(testemailAddress);
+    
+       //let sendEmail = document.getElementById("send");
+                       
+            window.location.href="mailto:" + testemailAddress;
+        
+
+   //  }else{
+
+   //     document.getElementById('problem').innerHTML = "Email address not found";
+  //  }
+}
+ 
+
 
 let date = new Date();
 

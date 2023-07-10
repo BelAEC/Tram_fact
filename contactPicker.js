@@ -1,4 +1,4 @@
-let yourContact = "";
+
 
 async function pickContact(){
         

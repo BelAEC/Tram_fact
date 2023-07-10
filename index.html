@@ -19,7 +19,7 @@
     
     <!-- <script src="search.js" defer></script> -->
     <script src="https://apis.google.com/js/api.js"></script>
-    <script type="text/javascript"  src="contactPicker.js" defer ></script>
+    
     
 
     <title>Invoice</title>
@@ -239,17 +239,17 @@
 
     </div>
 </div>
-    
+<script type="text/javascript"  src="contactPicker.js" defer ></script>    
 <script>
+let yourContact= "";
 
 async function displayContacts(){
-
     await pickContact();
-    // document.getElementById('test').innerHTML = "</br>" + yourContact;
-     document.getElementById('test1').innerHTML = "</br>" + yourContact;
-
-}  
+     document.getElementById('test').innerHTML = "</br>" + yourContact;
+    //  document.getElementById('test1').innerHTML = "</br>" + yourContact;
     
+}  
+
 let date = new Date();
 
 //date = date.toLocaleDateString('en-US');//alert(date);

@@ -12,7 +12,7 @@ async function pickContact(){
          
         
          if (availableProperties.includes("name")) {
-              
+            
                     const contacts = await navigator
                     .contacts
                     .select(
@@ -20,8 +20,8 @@ async function pickContact(){
                     {multiple: true}
                     );
          
-                if(contacts[0].address[0].email){
-          
+                if(contacts[0].address>0){
+                
                 emailAddress = contacts[0].address[0].email; 
                       }else{
                         document.getElementById('problem') = "noemailFound";

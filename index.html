@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
     <!-- Bootstrap CSS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
@@ -80,7 +79,7 @@
                         <button id="select" onclick="displayContacts(this)">Selectionner Contacts</button>
                        
                         <!-- <button class="btn-form" onclick="resetForm(this);" id="refresh">Reset</button> -->
-                        <button id ="send" onClick="printAndSend()";>Send Email</button>
+                        <button id ="send" onClick="sendEmail()";>Send</button>
                         
                         
                         </div>
@@ -244,7 +243,6 @@
 <!-- <script type="text/javascript"  src="sendEmail.js" defer ></script> -->
 
 <script>
-    
 let yourContact= "";
 let emailAddress = "";
 
@@ -255,19 +253,11 @@ async function displayContacts(){
          //  document.getElementById('test1').innerHTML = "</br>" + yourContact;
     
 } 
-// async function displayEmail(){
-
-//      await pickContact();
-//      document.getElementById('problem').innerHTML = "emailAddress = " +emailAddress;
-//  }
  
- 
+function sendEmail(emailAddress){
 
-function sendEmail(){
-
-    pickContact();
-    
-         //if(contact[0].address[0].email>0){
+     displayContacts();
+    //if(contact[0].address[0].email>0){
     // if(document.getElementById('test').innerHTML!==""){
         //let testemailAddress = "bel@mail.com";
         // let emailAddress = document.getElementById("test").textContent;
@@ -277,7 +267,8 @@ function sendEmail(){
        //let sendEmail = document.getElementById("send");
                        
             window.location.href="mailto:" + emailAddress;
-      
+        
+
 //      }else{
 
 //        document.getElementById('problem').innerHTML = "Email address not found";

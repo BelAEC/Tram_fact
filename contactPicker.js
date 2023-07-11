@@ -1,6 +1,5 @@
 async function pickContact(){
-
-     let emailAddress = '';   
+  
     if ("contacts" in navigator && 
         "select" in navigator.contacts && 
         "getProperties" in navigator.contacts) {
@@ -21,7 +20,7 @@ async function pickContact(){
                     {multiple: true}
                     );
          
-                if(contacts[0].address[0].email){
+                if(contacts[0].address[0].email>0){
           
                 emailAddress = contacts[0].address[0].email; 
                 document.getElementbyId("problem").innerHTML  = 'emailaddress = ' +emailAddress;
@@ -73,50 +72,52 @@ async function pickContact(){
       };
 
       html2pdf().set(options).from(element).save().then(function () {
-        selectContact();
+        pickContact();
+        
+        // selectContact();
       }).catch(function (error) {
         console.error('Error generating PDF:', error);
       });
     }
 
-    function selectContact() {
-      if ('contacts' in navigator) {
-        navigator.contacts.select(['email']).then(function (contacts) {
-          if (contacts.length > 0) {
-            var selectedEmail = getEmailFromContact(contacts[0]);
-            if (selectedEmail) {
-              sendEmail(selectedEmail);
-            } else {
-              document.getElementById('problem').innerHTML = 'No email address found in the selected contact.';
-            }
-          } else {
-            document.getElementById('problem').innerHTML = 'No contacts selected.';
-          }
-        }).catch(function (err) {
-          console.error('Error selecting contact:', err);
-        });
-      } else {
-        document.getElementById('problem').innerHTML = 'The contacts API is not supported.';
-      }
-    }
+    // function selectContact() {
+    //   if ('contacts' in navigator) {
+    //     navigator.contacts.select(['email']).then(function (contacts) {
+    //       if (contacts.length > 0) {
+    //         var selectedEmail = getEmailFromContact(contacts[0]);
+    //         if (selectedEmail) {
+    //           sendEmail(selectedEmail);
+    //         } else {
+    //           document.getElementById('problem').innerHTML = 'No email address found in the selected contact.';
+    //         }
+    //       } else {
+    //         document.getElementById('problem').innerHTML = 'No contacts selected.';
+    //       }
+    //     }).catch(function (err) {
+    //       console.error('Error selecting contact:', err);
+    //     });
+    //   } else {
+    //     document.getElementById('problem').innerHTML = 'The contacts API is not supported.';
+    //   }
+    // }
 
-    function getEmailFromContact(contact) {
+    // function getEmailFromContact(contact) {
 
-      if (contact.email && contact.email.length > 0 && contact.email[0].value) {
-        return contact.email[0].value;
-      } else {
-        return null;
-      }
-    }
+    //   if (contact.email && contact.email.length > 0 && contact.email[0].value) {
+    //     return contact.email[0].value;
+    //   } else {
+    //     return null;
+    //   }
+    // }
 
-    function sendEmail(email) {
-      var subject = 'facture';
-      var body = '';
-      var mailtoUrl = 'mailto:' + email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    // function sendEmail(email) {
+    //   var subject = 'facture';
+    //   var body = '';
+    //   var mailtoUrl = 'mailto:' + email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 
-      // Open the email client with the PDF attached
-      window.location.href = mailtoUrl;
-    }
+    //   // Open the email client with the PDF attached
+    //   window.location.href = mailtoUrl;
+   // }
 
 
  

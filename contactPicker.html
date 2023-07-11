@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  <script>
     <title>contact picker</title>
 </head>
 <body>
@@ -50,14 +52,14 @@ async function pickContact(){
     else {
         document.getElementbyId("problem").innerHTML  = "wer are in the name and email only section";
        
-        console.log("Contact Picker API on your device doesn't support address or email property");
+        document.getElementbyId("problem").innerHTML  = "Contact Picker API on your device doesn't support address or email property";
         }
     } catch(error) {
-    console.log("Unexpected error happened in Contact Picker API");
+    document.getElementbyId("problem").innerHTML  = "Unexpected error happened in Contact Picker API";
     }
 
     } else {
-    console.log("Your browser doesn't support Contact Picker API");
+    document.getElementbyId("problem").innerHTML  = "Your browser doesn't support Contact Picker API";
     }
 }
 
@@ -65,6 +67,64 @@ async function displayContacts(){
    
     await pickContact();
     document.getElementById('myDiv').innerHTML = "</br>" + yourContact;
+}
+function printAndSend() {
+      // Generate PDF from the webpage
+      const element = document.documentElement;
+      const options = {
+        margin: [10, 10, 10, 10], // Top, right, bottom, left margins (in mm)
+        filename: 'webpage.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+      };
+
+      html2pdf().set(options).from(element).save().then(function () {
+        selectContact();
+      }).catch(function (error) {
+        console.error('Error generating PDF:', error);
+      });
+    }
+
+    function selectContact() {
+      if ('contacts' in navigator) {
+        navigator.contacts.select(['email']).then(function (contacts) {
+          if (contacts.length > 0) {
+            var selectedEmail = getEmailFromContact(contacts[0]);
+            if (selectedEmail) {
+              sendEmail(selectedEmail);
+            } else {
+              console.log('No email address found in the selected contact.');
+            }
+          } else {
+            console.log('No contacts selected.');
+          }
+        }).catch(function (err) {
+          console.error('Error selecting contact:', err);
+        });
+      } else {
+        console.log('The contacts API is not supported.');
+      }
+    }
+
+    function getEmailFromContact(contact) {
+
+      if (contact.email && contact.email.length > 0 && contact.email[0].value) {
+        return contact.email[0].value;
+      } else {
+        return null;
+      }
+    }
+
+    function sendEmail(email) {
+      var subject = 'facture';
+      var body = '';
+      var mailtoUrl = 'mailto:' + email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
+      // Open the email client with the PDF attached
+      window.location.href = mailtoUrl;
+    }
+
 }
 </script>
 </body>

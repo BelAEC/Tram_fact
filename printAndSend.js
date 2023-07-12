@@ -10,7 +10,8 @@ function printAndSend() {
     };
 
     html2pdf().set(options).from(element).save().then(function () {
-      window.open("c:/Users/Hp/Downloads/invoice.pdf");
+        let fileURL = 'c:/Users/Hp/Downloads/invoice.pdf';
+        window.open(fileURL);
       selectContact();
     }).catch(function (error) {
       console.error('Error generating PDF:', error);

@@ -20,11 +20,12 @@ async function pickContact(){
                     {multiple: true}
                     );
          
-                if(contacts[0].address>0){
+                if(contacts[0].address > 0){
                 
                 emailAddress = contacts[0].address[0].email; 
                       }else{
-                        document.getElementById('problem') = "noemailFound";
+                        emailAddress = "emailAddres@failed.com";
+                     //   document.getElementById('problem') = "noemailFound";
                       }
            
                  if(contacts[0].address.length > 0){
@@ -38,7 +39,7 @@ async function pickContact(){
 
              yourContact= contacts[0].name+"<br />"+contacts[0].tel+"<br />" + contacts[0].email;
         }
-
+         return emailAddress;
   
     }
 
@@ -59,6 +60,7 @@ async function pickContact(){
 }
 
 function printAndSend() {
+
     // Generate PDF from the webpage
     const element = document.documentElement;
     const options = {
@@ -81,7 +83,7 @@ function printAndSend() {
         if ('contacts' in navigator) {
           navigator.contacts.select(['email']).then(function (contacts) {
             if (contacts.length > 0) {
-               var selectedEmail = pickContact(); //returns email address
+               var selectedEmail = pickContact(); //should email address
                // var selectedEmail = getEmailFromContact(contacts[0].address[0].email);
               if (selectedEmail) {
                 sendEmail(selectedEmail); //email adddress is selected mail
@@ -109,9 +111,10 @@ function printAndSend() {
 //       return null;
 //     }
 //   }
-  function sendEmail(email) {
+  async function sendEmail() {
+    await pickContact();
     var subject = 'facture';
-    var mailtoUrl = 'mailto:' + email + '?subject=' + encodeURIComponent(subject);
+    var mailtoUrl = 'mailto:' + emailAddress + '?subject=' + encodeURIComponent(subject);
 
     // Open the email client with the PDF attached
     window.location.href = mailtoUrl;

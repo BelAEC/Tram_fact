@@ -59,50 +59,53 @@ async function pickContact(){
     return emailAddress;
 }
 
-function printAndSend() {
+// function printAndSend() {
 
-    // Generate PDF from the webpage
-    const element = document.documentElement;
-    const options = {
-      margin: [10, 10, 10, 10], // Top, right, bottom, left margins (in mm)
-      filename: 'webpage.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-    };
+//     // Generate PDF from the webpage
+//     const element = document.documentElement;
+//     const options = {
+//       margin: [10, 10, 10, 10], // Top, right, bottom, left margins (in mm)
+//       filename: 'webpage.pdf',
+//       image: { type: 'jpeg', quality: 0.98 },
+//       html2canvas: { scale: 2 },
+//       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+//     };
 
-    html2pdf().set(options).from(element).save().then(function () {
-        selectContact();
-      }).catch(function (error) {
-        document.getElementById('problem').innerHTML = 'Error generating PDF:'+ error;
-      })
-    }
+//     html2pdf().set(options).from(element).save().then(function () {
+//         selectContact();
+//       }).catch(function (error) {
+//         document.getElementById('problem').innerHTML = 'Error generating PDF:'+ error;
+//       })
+//     }
 
-    function selectContact() {
+//     function selectContact() {
        
-        if ('contacts' in navigator) {
-          navigator.contacts.select(['email']).then(function (contacts) {
-            if (contacts.length > 0) {
-               var selectedEmail = pickContact(); //should email address
-               // var selectedEmail = getEmailFromContact(contacts[0].address[0].email);
-              if (selectedEmail) {
-                sendEmail(selectedEmail); //email adddress is selected mail
-              } else {
-                document.getElementById('problem').innerHTML = 'No email address found in the selected contact.'
+//         if ('contacts' in navigator) {
+//           navigator.contacts.select(['email']).then(function (contacts) {
+//             if (contacts.length > 0) {
+//                var selectedEmail = pickContact(); //should email address
+//                // var selectedEmail = getEmailFromContact(contacts[0].address[0].email);
+//               if (selectedEmail) {
+//                 sendEmail(selectedEmail); //email adddress is selected mail
+//               } else {
+//                 document.getElementById('problem').innerHTML = 'No email address found in the selected contact.'
                 
-              }
-            } else {
-            document.getElementById('problem').innerHTML = 'No contacts selected.';
-            }
-          }).catch(function (err) {
-            console.error('Error selecting contact:', err);
-          });
-        } else {
-            document.getElementById('problem').innerHTML = 'The contacts API is not supported.';
-        }
-      }
+//               }
+//             } else {
+//             document.getElementById('problem').innerHTML = 'No contacts selected.';
+//             }
+//           }).catch(function (err) {
+//             console.error('Error selecting contact:', err);
+//           });
+//         } else {
+//             document.getElementById('problem').innerHTML = 'The contacts API is not supported.';
+//         }
+//       }
   
-
+      
+      
+      //sendEmailWithAttachment(email, subject, body, attachment);
+      
 //   function getEmailFromContact(contact) {
 
 //     if (contact && contact[0].address[0].email >0) {
@@ -111,14 +114,14 @@ function printAndSend() {
 //       return null;
 //     }
 //   }
-  async function sendEmail() {
-    await pickContact();
-    var subject = 'facture';
-    var mailtoUrl = 'mailto:' + emailAddress + '?subject=' + encodeURIComponent(subject);
+  // async function sendEmail() {
+  //   await pickContact();
+  //   var subject = 'facture';
+  //   var mailtoUrl = 'mailto:' + emailAddress + '?subject=' + encodeURIComponent(subject);
 
-    // Open the email client with the PDF attached
-    window.location.href = mailtoUrl;
-  }
+  //   // Open the email client with the PDF attached
+  //   window.location.href = mailtoUrl;
+  // }
 
 
  

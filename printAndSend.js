@@ -22,7 +22,7 @@ function printAndSend() {
     if ('contacts' in navigator) {
       navigator.contacts.select(['email']).then(function (contacts) {
         if (contacts.length > 0) {
-          var selectedEmail = getEmailFromContact(contacts[0]);
+          var selectedEmail = getEmailFromContact(contacts[0].email);
           if (selectedEmail) {
             sendEmail(selectedEmail);
           } else {
@@ -40,6 +40,7 @@ function printAndSend() {
   }
 
   function getEmailFromContact(contact) {
+
     if (contact.email && contact.email.length > 0 && contact.email[0].value) {
       return contact.email[0].value;
     } else {

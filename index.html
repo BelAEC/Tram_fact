@@ -25,16 +25,39 @@
 
     <!-- ... Your entire HTML content from the previous code stays intact ... -->
 
+    <!-- Manual Contact Form Fallback -->
+    <div id="manual-contact" class="container mt-3" style="display: none;">
+      <h5>Entrer les coordonnées manuellement :</h5>
+      <div class="form-group">
+        <label>Nom:</label>
+        <input type="text" id="manual-name" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Email:</label>
+        <input type="email" id="manual-email" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Téléphone:</label>
+        <input type="tel" id="manual-phone" class="form-control">
+      </div>
+      <button onclick="useManualContact()" class="btn btn-primary">Utiliser ces informations</button>
+    </div>
+
     <!-- Append updated displayContacts and printAndSend logic -->
     <script>
         let yourContact = "";
         let emailAddress = "";
 
         async function pickContact() {
+            if (!('contacts' in navigator && 'ContactsManager' in window)) {
+                // Fallback
+                document.getElementById('manual-contact').style.display = 'block';
+                return;
+            }
+
             try {
                 const props = ['name', 'email', 'tel', 'address', 'icon'];
-                const opts = { multiple: false }; // single contact only
-
+                const opts = { multiple: false };
                 const contacts = await navigator.contacts.select(props, opts);
 
                 if (contacts.length === 0) return;
@@ -49,14 +72,25 @@
                 `;
 
                 emailAddress = c.email?.[0] || "";
+                document.getElementById('test').innerHTML = yourContact;
 
             } catch (error) {
                 console.error('Contact selection error:', error);
+                document.getElementById('manual-contact').style.display = 'block';
             }
         }
 
         async function displayContacts() {
             await pickContact();
+        }
+
+        function useManualContact() {
+            const name = document.getElementById("manual-name").value;
+            const email = document.getElementById("manual-email").value;
+            const phone = document.getElementById("manual-phone").value;
+
+            yourContact = `<div><strong>${name}</strong></div>${phone}<br><a href="mailto:${email}">${email}</a>`;
+            emailAddress = email;
             document.getElementById('test').innerHTML = yourContact;
         }
 

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>iOS Invoice</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- PDF Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    #invoice {
+      border: 1px solid #ccc;
+      padding: 20px;
+      max-width: 600px;
+    }
+    button {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Facture</h2>
+
+<div id="invoice">
+  <h3>Acupuncture Yi King</h3>
+  <p><strong>Date:</strong> <span id="date"></span></p>
+  <p><strong>Facture:</strong> <span id="facture-id"></span></p>
+
+  <h4>Client:</h4>
+  <p id="contact-info">Aucun contact sélectionné.</p>
+
+  <h4>Traitement:</h4>
+  <p>Acupuncture - Suivi Adulte: 75$</p>
+
+  <h4>Total: 75$</h4>
+</div>
+
+<!-- Buttons -->
+<button onclick="pickContact()">Sélectionner Contact</button>
+<button onclick="downloadPDF()">Télécharger PDF</button>
+
+<script>
+  // Set current date
+  document.getElementById('date').innerText = new Date().toLocaleDateString();
+  document.getElementById('facture-id').innerText = Date.now();
+
+  async function pickContact() {
+    if (!('contacts' in navigator && 'select' in navigator.contacts)) {
+      alert("Sélecteur de contacts non pris en charge sur cet appareil.");
+      return;
+    }
+
+    try {
+      const props = ['name', 'email', 'tel', 'address'];
+      const opts = { multiple: false };
+
+      const contacts = await navigator.contacts.select(props, opts);
+      if (contacts.length > 0) {
+        const c = contacts[0];
+        document.getElementById('contact-info').innerHTML = `
+          <strong>${c.name}</strong><br>
+          ${c.tel ? c.tel[0] : ''}<br>
+          ${c.email ? c.email[0] : ''}<br>
+        `;
+      }
+    } catch (error) {
+      console.error("Contact selection failed:", error);
+    }
+  }
+
+  function downloadPDF() {
+    const element = document.getElementById("invoice");
+    html2pdf().from(element).save("facture.pdf");
+  }
+</script>
+
+</body>
+</html>

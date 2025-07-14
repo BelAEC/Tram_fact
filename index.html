@@ -1,84 +1,92 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>iOS Invoice</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <!-- Custom Style -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 
-  <!-- PDF Library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styly.css">
 
-  <style>
-    body {
-      font-family: sans-serif;
-      padding: 20px;
-    }
-    #invoice {
-      border: 1px solid #ccc;
-      padding: 20px;
-      max-width: 600px;
-    }
-    button {
-      margin-top: 10px;
-    }
-  </style>
+    <title>Invoice</title>
 </head>
+
 <body>
+    <!-- Your existing invoice content remains the same -->
 
-<h2>Facture</h2>
+    <!-- ... Your entire HTML content from the previous code stays intact ... -->
 
-<div id="invoice">
-  <h3>Acupuncture Yi King</h3>
-  <p><strong>Date:</strong> <span id="date"></span></p>
-  <p><strong>Facture:</strong> <span id="facture-id"></span></p>
+    <!-- Append updated displayContacts and printAndSend logic -->
+    <script>
+        let yourContact = "";
+        let emailAddress = "";
 
-  <h4>Client:</h4>
-  <p id="contact-info">Aucun contact sélectionné.</p>
+        async function pickContact() {
+            try {
+                const props = ['name', 'email', 'tel', 'address', 'icon'];
+                const opts = { multiple: false }; // single contact only
 
-  <h4>Traitement:</h4>
-  <p>Acupuncture - Suivi Adulte: 75$</p>
+                const contacts = await navigator.contacts.select(props, opts);
 
-  <h4>Total: 75$</h4>
-</div>
+                if (contacts.length === 0) return;
+                const c = contacts[0];
 
-<!-- Buttons -->
-<button onclick="pickContact()">Sélectionner Contact</button>
-<button onclick="downloadPDF()">Télécharger PDF</button>
+                yourContact = `
+                    <div><strong>${c.name}</strong></div>
+                    ${c.address?.[0]?.streetAddress || ''}<br>
+                    ${c.address?.[0]?.addressLevel2 || ''}, ${c.address?.[0]?.postalCode || ''}<br>
+                    ${c.tel?.[0] || ''}<br>
+                    <a href="mailto:${c.email?.[0] || ''}">${c.email?.[0] || ''}</a>
+                `;
 
-<script>
-  // Set current date
-  document.getElementById('date').innerText = new Date().toLocaleDateString();
-  document.getElementById('facture-id').innerText = Date.now();
+                emailAddress = c.email?.[0] || "";
 
-  async function pickContact() {
-    if (!('contacts' in navigator && 'select' in navigator.contacts)) {
-      alert("Sélecteur de contacts non pris en charge sur cet appareil.");
-      return;
-    }
+            } catch (error) {
+                console.error('Contact selection error:', error);
+            }
+        }
 
-    try {
-      const props = ['name', 'email', 'tel', 'address'];
-      const opts = { multiple: false };
+        async function displayContacts() {
+            await pickContact();
+            document.getElementById('test').innerHTML = yourContact;
+        }
 
-      const contacts = await navigator.contacts.select(props, opts);
-      if (contacts.length > 0) {
-        const c = contacts[0];
-        document.getElementById('contact-info').innerHTML = `
-          <strong>${c.name}</strong><br>
-          ${c.tel ? c.tel[0] : ''}<br>
-          ${c.email ? c.email[0] : ''}<br>
-        `;
-      }
-    } catch (error) {
-      console.error("Contact selection failed:", error);
-    }
-  }
+        function printAndSend() {
+            const element = document.getElementById("printArea");
+            const opt = {
+                margin: 0,
+                filename: 'facture.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
 
-  function downloadPDF() {
-    const element = document.getElementById("invoice");
-    html2pdf().from(element).save("facture.pdf");
-  }
-</script>
+            html2pdf().from(element).set(opt).outputPdf().then(function(pdf) {
+                const blob = new Blob([pdf], { type: "application/pdf" });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = "facture.pdf";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                if (emailAddress) {
+                    window.location.href = `mailto:${emailAddress}?subject=Facture&body=Veuillez trouver ci-joint votre facture.`;
+                }
+            });
+        }
+    </script>
 
 </body>
 </html>
